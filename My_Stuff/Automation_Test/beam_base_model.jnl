@@ -1,0 +1,220 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+#================================ Set Variables ================================
+Beam_Length = 1 # Beam Length in m
+Beam_Height = 0.1 # Beam Height in m
+#================================ Create Part ================================
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(Beam_Length, Beam_Height))
+mdb.models['Model-1'].Part(dimensionality=TWO_D_PLANAR, name='Beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Beam'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+# Save by Ali on 2016_08_31-15.33.54; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((200000000000.0, 0.3), 
+    ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name='Steel', 
+    thickness=0.1)
+# Save by Ali on 2016_08_31-15.45.22; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['Beam'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    faces=mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+# Save by Ali on 2016_08_31-15.49.03; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Beam-1', part=
+    mdb.models['Model-1'].parts['Beam'])
+# Save by Ali on 2016_08_31-15.50.43; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].StaticStep(description='Tip Load', name='Step-1', 
+    previous='Initial')
+# Save by Ali on 2016_08_31-15.52.37; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Fixed_End')
+mdb.models['Model-1'].EncastreBC(createStepName='Step-1', localCsys=None, name=
+    'Cantilever_Fixed', region=
+    mdb.models['Model-1'].rootAssembly.sets['Fixed_End'])
+# Save by Ali on 2016_08_31-15.54.38; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.Set(name='Load_Points', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].vertices.getSequenceFromMask(
+    ('[#6 ]', ), ))
+mdb.models['Model-1'].ConcentratedForce(cf2=-100.0, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Tip_Load', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Load_Points'])
+# Save by Ali on 2016_08_31-16.00.36; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#a ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#5 ]', ), 
+    ), number=10)
+mdb.models['Model-1'].parts['Beam'].generateMesh()
+mdb.models['Model-1'].parts['Beam'].setElementType(elemTypes=(ElemType(
+    elemCode=CPS4R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    hourglassControl=DEFAULT, distortionControl=DEFAULT), ElemType(
+    elemCode=CPS3, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+# Save by Ali on 2016_08_31-16.03.21; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['Beam'].setElementType(elemTypes=(ElemType(
+    elemCode=CPS8R, elemLibrary=STANDARD), ElemType(elemCode=CPS6M, 
+    elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+# Save by Ali on 2016_08_31-16.06.37; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by Ali on 2016_08_31-16.07.45; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'MISES', 'E', 'EE', 'U', 'UT', 'UR', 'RF', 'RT', 'RM', 'CF'))
+# Save by Ali on 2016_08_31-16.15.58; build 6.13-1 2013_05_16-03.28.56 126354
