@@ -1,12 +1,12 @@
 #================================ Set Variables ================================
-Beam_Length = 1 # Beam Length in m
-Beam_Height = 0.1 # Beam Height in m
+Beam_Length = 6 # Beam Length in m
+Beam_Height = 0.2 # Beam Height in m
 Beam_Width = 0.1 # Beam Width in m
 Material = 'Steel' # Material Name
-Youngs_mod = 200*10**9 # Young's modulus in N/m^2
+Youngs_mod = 10000000000 # Young's modulus in N/m^2
 Poissons_ratio = 0.3 # Poisson ratio
-Tip_Load = 20000 # Total tip load in N
-L_Mesh_Points = 5 # Mesh points along beam length
+Tip_Load = 1 # Total tip load in N
+L_Mesh_Points = 4 # Mesh points along beam length
 H_Mesh_Points = 4 # Mesh points along height
 Mesh_Type = 'Quad' # Mesh order ('Lin' for Linear or 'Quad' for Quadratic)
 Name = '2D_' + str(Beam_Length) + 'x' + str(Beam_Height) + 'x' + str(Beam_Width) + '_Cantilever_' + str(\

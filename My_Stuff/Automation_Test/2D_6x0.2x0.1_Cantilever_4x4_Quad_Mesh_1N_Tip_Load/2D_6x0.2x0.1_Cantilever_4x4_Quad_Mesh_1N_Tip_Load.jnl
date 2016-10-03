@@ -1,0 +1,699 @@
+# Save by s1208454 on 2016_09_26-22.41.04; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(6, 0.2))
+mdb.models['Model-1'].Part(dimensionality=TWO_D_PLANAR, name='Beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Beam'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((200000000000, 0.3), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name='Steel', 
+    thickness=0.1)
+mdb.models['Model-1'].parts['Beam'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    faces=mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Beam-1', part=
+    mdb.models['Model-1'].parts['Beam'])
+mdb.models['Model-1'].StaticStep(description='Tip Load', name='Step-1', 
+    previous='Initial')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Fixed_End')
+mdb.models['Model-1'].EncastreBC(createStepName='Step-1', localCsys=None, name=
+    'Cantilever_Fixed', region=
+    mdb.models['Model-1'].rootAssembly.sets['Fixed_End'])
+mdb.models['Model-1'].rootAssembly.Set(name='Load_Points', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].vertices.getSequenceFromMask(
+    ('[#6 ]', ), ))
+mdb.models['Model-1'].ConcentratedForce(cf2=-1, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Tip_Load', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Load_Points'])
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#a ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#5 ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].setElementType(elemTypes=(ElemType(
+    elemCode=CPS8R, elemLibrary=STANDARD), ElemType(elemCode=CPS6M, 
+    elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+mdb.models['Model-1'].parts['Beam'].generateMesh()
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'MISES', 'E', 'EE', 'U', 'UT', 'UR', 'RF', 'RT', 'RM', 'CF'))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='2D_Cantilever', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by s1208454 on 2016_09_26-22.41.04; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['2D_Cantilever'].submit(consistencyChecking=OFF)
+mdb.jobs['2D_Cantilever'].waitForCompletion()
+# Save by s1208454 on 2016_09_26-22.41.15; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['2D_Cantilever']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': '2D_Cantilever'})
+mdb.jobs['2D_Cantilever']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': '2D_Cantilever'})
+mdb.jobs['2D_Cantilever'].submit(consistencyChecking=OFF)
+mdb.jobs['2D_Cantilever']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'w4068.see.ed.ac.uk', 'handle': 0, 
+    'jobName': '2D_Cantilever'})
+mdb.jobs['2D_Cantilever']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'MODULUS OF ELASTICITY MAY NOT BE ZERO FOR ISOTROPIC ELASTICITY', 
+    'jobName': '2D_Cantilever'})
+mdb.jobs['2D_Cantilever']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE REQUEST FOR MISES OUTPUT WILL BE REPLACED BY A REQUEST FOR S OUTPUT', 
+    'jobName': '2D_Cantilever'})
+mdb.jobs['2D_Cantilever']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/s1208454/FEMSS4/My_Stuff/Automation_Test/2D_6x0.2x0.1_Cantilever_4x4_Quad_Mesh_1N_Tip_Load/2D_Cantilever.odb', 
+    'jobName': '2D_Cantilever'})
+mdb.jobs['2D_Cantilever']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 
+    'jobName': '2D_Cantilever'})
+mdb.jobs['2D_Cantilever']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': '2D_Cantilever'})
+mdb.jobs['2D_Cantilever']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': '2D_Cantilever'})
+# Save by s1208454 on 2016_09_26-22.44.34; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(6, 0.2))
+mdb.models['Model-1'].Part(dimensionality=TWO_D_PLANAR, name='Beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Beam'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((100000000000, 0.3), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name='Steel', 
+    thickness=0.1)
+mdb.models['Model-1'].parts['Beam'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    faces=mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Beam-1', part=
+    mdb.models['Model-1'].parts['Beam'])
+mdb.models['Model-1'].StaticStep(description='Tip Load', name='Step-1', 
+    previous='Initial')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Fixed_End')
+mdb.models['Model-1'].EncastreBC(createStepName='Step-1', localCsys=None, name=
+    'Cantilever_Fixed', region=
+    mdb.models['Model-1'].rootAssembly.sets['Fixed_End'])
+mdb.models['Model-1'].rootAssembly.Set(name='Load_Points', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].vertices.getSequenceFromMask(
+    ('[#6 ]', ), ))
+mdb.models['Model-1'].ConcentratedForce(cf2=-1, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Tip_Load', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Load_Points'])
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#a ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#5 ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].setElementType(elemTypes=(ElemType(
+    elemCode=CPS8R, elemLibrary=STANDARD), ElemType(elemCode=CPS6M, 
+    elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+mdb.models['Model-1'].parts['Beam'].generateMesh()
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'MISES', 'E', 'EE', 'U', 'UT', 'UR', 'RF', 'RT', 'RM', 'CF'))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='2D_Cantilever', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by s1208454 on 2016_09_26-22.44.34; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['2D_Cantilever'].submit(consistencyChecking=OFF)
+mdb.jobs['2D_Cantilever'].waitForCompletion()
+# Save by s1208454 on 2016_09_26-22.44.51; build 6.12-1 2012_03_13-20.21.46 119612
+# Save by s1208454 on 2016_09_26-22.45.34; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(6, 0.2))
+mdb.models['Model-1'].Part(dimensionality=TWO_D_PLANAR, name='Beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Beam'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((100000000000, 0.3), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name='Steel', 
+    thickness=0.1)
+mdb.models['Model-1'].parts['Beam'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    faces=mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Beam-1', part=
+    mdb.models['Model-1'].parts['Beam'])
+mdb.models['Model-1'].StaticStep(description='Tip Load', name='Step-1', 
+    previous='Initial')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Fixed_End')
+mdb.models['Model-1'].EncastreBC(createStepName='Step-1', localCsys=None, name=
+    'Cantilever_Fixed', region=
+    mdb.models['Model-1'].rootAssembly.sets['Fixed_End'])
+mdb.models['Model-1'].rootAssembly.Set(name='Load_Points', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].vertices.getSequenceFromMask(
+    ('[#6 ]', ), ))
+mdb.models['Model-1'].ConcentratedForce(cf2=-1, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Tip_Load', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Load_Points'])
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#a ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#5 ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].setElementType(elemTypes=(ElemType(
+    elemCode=CPS8R, elemLibrary=STANDARD), ElemType(elemCode=CPS6M, 
+    elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+mdb.models['Model-1'].parts['Beam'].generateMesh()
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'MISES', 'E', 'EE', 'U', 'UT', 'UR', 'RF', 'RT', 'RM', 'CF'))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='2D_Cantilever', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by s1208454 on 2016_09_26-22.45.34; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['2D_Cantilever'].submit(consistencyChecking=OFF)
+mdb.jobs['2D_Cantilever'].waitForCompletion()
+# Save by s1208454 on 2016_09_26-22.45.46; build 6.12-1 2012_03_13-20.21.46 119612
+# Save by s1208454 on 2016_09_26-22.47.32; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(6, 0.2))
+mdb.models['Model-1'].Part(dimensionality=TWO_D_PLANAR, name='Beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Beam'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((200000000000, 0.3), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name='Steel', 
+    thickness=0.1)
+mdb.models['Model-1'].parts['Beam'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    faces=mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Beam-1', part=
+    mdb.models['Model-1'].parts['Beam'])
+mdb.models['Model-1'].StaticStep(description='Tip Load', name='Step-1', 
+    previous='Initial')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Fixed_End')
+mdb.models['Model-1'].EncastreBC(createStepName='Step-1', localCsys=None, name=
+    'Cantilever_Fixed', region=
+    mdb.models['Model-1'].rootAssembly.sets['Fixed_End'])
+mdb.models['Model-1'].rootAssembly.Set(name='Load_Points', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].vertices.getSequenceFromMask(
+    ('[#6 ]', ), ))
+mdb.models['Model-1'].ConcentratedForce(cf2=-1, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Tip_Load', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Load_Points'])
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#a ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#5 ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].setElementType(elemTypes=(ElemType(
+    elemCode=CPS8R, elemLibrary=STANDARD), ElemType(elemCode=CPS6M, 
+    elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+mdb.models['Model-1'].parts['Beam'].generateMesh()
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'MISES', 'E', 'EE', 'U', 'UT', 'UR', 'RF', 'RT', 'RM', 'CF'))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='2D_Cantilever', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by s1208454 on 2016_09_26-22.47.33; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['2D_Cantilever'].submit(consistencyChecking=OFF)
+mdb.jobs['2D_Cantilever'].waitForCompletion()
+# Save by s1208454 on 2016_09_26-22.47.39; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['2D_Cantilever']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': '2D_Cantilever'})
+mdb.jobs['2D_Cantilever']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': '2D_Cantilever'})
+# Save by s1208454 on 2016_09_26-22.48.20; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(6, 0.2))
+mdb.models['Model-1'].Part(dimensionality=TWO_D_PLANAR, name='Beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Beam'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((200000000000, 0.3), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name='Steel', 
+    thickness=0.1)
+mdb.models['Model-1'].parts['Beam'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    faces=mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Beam-1', part=
+    mdb.models['Model-1'].parts['Beam'])
+mdb.models['Model-1'].StaticStep(description='Tip Load', name='Step-1', 
+    previous='Initial')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Fixed_End')
+mdb.models['Model-1'].EncastreBC(createStepName='Step-1', localCsys=None, name=
+    'Cantilever_Fixed', region=
+    mdb.models['Model-1'].rootAssembly.sets['Fixed_End'])
+mdb.models['Model-1'].rootAssembly.Set(name='Load_Points', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].vertices.getSequenceFromMask(
+    ('[#6 ]', ), ))
+mdb.models['Model-1'].ConcentratedForce(cf2=-1, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Tip_Load', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Load_Points'])
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#a ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#5 ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].setElementType(elemTypes=(ElemType(
+    elemCode=CPS8R, elemLibrary=STANDARD), ElemType(elemCode=CPS6M, 
+    elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+mdb.models['Model-1'].parts['Beam'].generateMesh()
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'MISES', 'E', 'EE', 'U', 'UT', 'UR', 'RF', 'RT', 'RM', 'CF'))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='2D_Cantilever', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by s1208454 on 2016_09_26-22.48.20; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['2D_Cantilever'].submit(consistencyChecking=OFF)
+mdb.jobs['2D_Cantilever'].waitForCompletion()
+# Save by s1208454 on 2016_09_26-22.48.27; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['2D_Cantilever']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': '2D_Cantilever'})
+mdb.jobs['2D_Cantilever']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': '2D_Cantilever'})
+# Save by s1208454 on 2016_09_26-22.49.23; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(6, 0.2))
+mdb.models['Model-1'].Part(dimensionality=TWO_D_PLANAR, name='Beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Beam'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=(('2e9', 0.3), ))
+#* TypeError: table[0][0]; found string, expecting float
+# Save by s1208454 on 2016_09_26-22.49.47; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(6, 0.2))
+mdb.models['Model-1'].Part(dimensionality=TWO_D_PLANAR, name='Beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Beam'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((100000000000, 0.3), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name='Steel', 
+    thickness=0.1)
+mdb.models['Model-1'].parts['Beam'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    faces=mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Beam-1', part=
+    mdb.models['Model-1'].parts['Beam'])
+mdb.models['Model-1'].StaticStep(description='Tip Load', name='Step-1', 
+    previous='Initial')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Fixed_End')
+mdb.models['Model-1'].EncastreBC(createStepName='Step-1', localCsys=None, name=
+    'Cantilever_Fixed', region=
+    mdb.models['Model-1'].rootAssembly.sets['Fixed_End'])
+mdb.models['Model-1'].rootAssembly.Set(name='Load_Points', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].vertices.getSequenceFromMask(
+    ('[#6 ]', ), ))
+mdb.models['Model-1'].ConcentratedForce(cf2=-1, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Tip_Load', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Load_Points'])
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#a ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#5 ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].setElementType(elemTypes=(ElemType(
+    elemCode=CPS8R, elemLibrary=STANDARD), ElemType(elemCode=CPS6M, 
+    elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+mdb.models['Model-1'].parts['Beam'].generateMesh()
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'MISES', 'E', 'EE', 'U', 'UT', 'UR', 'RF', 'RT', 'RM', 'CF'))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='2D_Cantilever', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by s1208454 on 2016_09_26-22.49.47; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['2D_Cantilever'].submit(consistencyChecking=OFF)
+mdb.jobs['2D_Cantilever'].waitForCompletion()
+# Save by s1208454 on 2016_09_26-22.49.59; build 6.12-1 2012_03_13-20.21.46 119612
+# Save by s1208454 on 2016_09_26-22.52.38; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(6, 0.2))
+mdb.models['Model-1'].Part(dimensionality=TWO_D_PLANAR, name='Beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Beam'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((10000000000, 0.3), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name='Steel', 
+    thickness=0.1)
+mdb.models['Model-1'].parts['Beam'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    faces=mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Beam-1', part=
+    mdb.models['Model-1'].parts['Beam'])
+mdb.models['Model-1'].StaticStep(description='Tip Load', name='Step-1', 
+    previous='Initial')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Fixed_End')
+mdb.models['Model-1'].EncastreBC(createStepName='Step-1', localCsys=None, name=
+    'Cantilever_Fixed', region=
+    mdb.models['Model-1'].rootAssembly.sets['Fixed_End'])
+mdb.models['Model-1'].rootAssembly.Set(name='Load_Points', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Beam-1'].vertices.getSequenceFromMask(
+    ('[#6 ]', ), ))
+mdb.models['Model-1'].ConcentratedForce(cf2=-1, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Tip_Load', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Load_Points'])
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#a ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Beam'].edges.getSequenceFromMask(('[#5 ]', ), 
+    ), number=4)
+mdb.models['Model-1'].parts['Beam'].setElementType(elemTypes=(ElemType(
+    elemCode=CPS8R, elemLibrary=STANDARD), ElemType(elemCode=CPS6M, 
+    elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Beam'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+mdb.models['Model-1'].parts['Beam'].generateMesh()
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'MISES', 'E', 'EE', 'U', 'UT', 'UR', 'RF', 'RT', 'RM', 'CF'))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='2D_Cantilever', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by s1208454 on 2016_09_26-22.52.38; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['2D_Cantilever'].submit(consistencyChecking=OFF)
+mdb.jobs['2D_Cantilever'].waitForCompletion()
+# Save by s1208454 on 2016_09_26-22.52.50; build 6.12-1 2012_03_13-20.21.46 119612
