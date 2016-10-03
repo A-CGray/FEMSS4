@@ -1,0 +1,16 @@
+Abaqus JOB 2D_Cantilever
+Abaqus 6.13-1
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 5 tokens.
+<1019 out of 1024 licenses remain available>.
+Begin Analysis Input File Processor
+26/09/2016 22:55:11
+Run pre.exe
+26/09/2016 22:55:23
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+26/09/2016 22:55:23
+Run standard.exe
+26/09/2016 22:55:35
+End Abaqus/Standard Analysis
+Abaqus JOB 2D_Cantilever COMPLETED
