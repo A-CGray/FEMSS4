@@ -4,13 +4,13 @@ Abaqus License Manager checked out the following licenses:
 Abaqus/Standard checked out 5 tokens.
 <795 out of 800 licenses remain available>.
 Begin Analysis Input File Processor
-Mon 26 Sep 2016 22:52:43 BST
+Mon 03 Oct 2016 18:10:35 BST
 Run pre.exe
-Mon 26 Sep 2016 22:52:45 BST
+Mon 03 Oct 2016 18:10:36 BST
 End Analysis Input File Processor
 Begin Abaqus/Standard Analysis
-Mon 26 Sep 2016 22:52:45 BST
+Mon 03 Oct 2016 18:10:36 BST
 Run standard.exe
-Mon 26 Sep 2016 22:52:48 BST
+Mon 03 Oct 2016 18:10:38 BST
 End Abaqus/Standard Analysis
 Abaqus JOB 2D_Cantilever COMPLETED
