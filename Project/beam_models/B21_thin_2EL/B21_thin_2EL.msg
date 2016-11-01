@@ -1,6 +1,6 @@
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:54:38
+   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:55:56
    For use by  under license from Dassault Systemes or its subsidiary.
 
      5m LONG SIMPLY SUPPORTED thin BEAM WITH -10000 kN/m DISTRIBUTED LOAD, 2 ELEM
@@ -41,7 +41,7 @@
 
   INCREMENT     1 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  2.220E-16
 
-  NUMBER OF EQUATIONS =       13     NUMBER OF FLOATING PT. OPERATIONS =  3.94E+02
+  NUMBER OF EQUATIONS =        9     NUMBER OF FLOATING PT. OPERATIONS =  1.68E+02
 
      CHECK POINT   START OF SOLVER    
 
@@ -85,4 +85,4 @@
        USER TIME (SEC)      =   0.0000    
        SYSTEM TIME (SEC)    =   0.0000    
        TOTAL CPU TIME (SEC) =   0.0000    
-       WALLCLOCK TIME (SEC) =          1
+       WALLCLOCK TIME (SEC) =          0

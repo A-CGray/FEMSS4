@@ -1,9 +1,9 @@
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:54:38
+   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:58:29
    For use by  under license from Dassault Systemes or its subsidiary.
 
-     5m LONG SIMPLY SUPPORTED thin BEAM WITH -10000 kN/m DISTRIBUTED LOAD, 2 ELEM
+     5m LONG SIMPLY SUPPORTED thick BEAM WITH -100000 kN/m DISTRIBUTED LOAD, 10 E
                                                                                  
  STEP    1     INCREMENT     1     STEP TIME    0.00    
 
@@ -24,7 +24,7 @@
 
      EXTRAPOLATION WILL NOT BE USED
 
-     CHARACTERISTIC ELEMENT LENGTH      2.50    
+     CHARACTERISTIC ELEMENT LENGTH     0.500    
 
      DETAILS REGARDING ACTUAL SOLUTION WAVEFRONT REQUESTED
 
@@ -41,7 +41,7 @@
 
   INCREMENT     1 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  2.220E-16
 
-  NUMBER OF EQUATIONS =       13     NUMBER OF FLOATING PT. OPERATIONS =  3.94E+02
+  NUMBER OF EQUATIONS =       33     NUMBER OF FLOATING PT. OPERATIONS =  1.83E+03
 
      CHECK POINT   START OF SOLVER    
 
@@ -82,7 +82,7 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =   0.0000    
+       USER TIME (SEC)      =  0.10000    
        SYSTEM TIME (SEC)    =   0.0000    
-       TOTAL CPU TIME (SEC) =   0.0000    
-       WALLCLOCK TIME (SEC) =          1
+       TOTAL CPU TIME (SEC) =  0.10000    
+       WALLCLOCK TIME (SEC) =          0

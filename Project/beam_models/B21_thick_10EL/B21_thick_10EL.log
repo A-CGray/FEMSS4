@@ -1,0 +1,16 @@
+Abaqus JOB B21_thick_10EL
+Abaqus 6.13-1
+Abaqus License Manager checked out the following licenses:
+Abaqus/Foundation checked out 3 tokens.
+<1021 out of 1024 licenses remain available>.
+Begin Analysis Input File Processor
+10/31/2016 11:58:07 PM
+Run pre.exe
+10/31/2016 11:58:18 PM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+10/31/2016 11:58:18 PM
+Run standard.exe
+10/31/2016 11:58:29 PM
+End Abaqus/Standard Analysis
+Abaqus JOB B21_thick_10EL COMPLETED
