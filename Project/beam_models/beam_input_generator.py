@@ -1,8 +1,8 @@
 def beam_input_generator(element_type, element_number, beam_size):
-    if element_type == 'B23' or 'B21':
+    if element_type in ['B21', 'B23']:
         node_per_el = 2
         el_def = '1, 2'
-    elif element_type == 'B22':
+    else:
         node_per_el = 3
         el_def = '1, 2, 3'
     if beam_size == 'thick':
@@ -46,14 +46,14 @@ def beam_input_generator(element_type, element_number, beam_size):
     ** GENERATE THE REST OF THE ELEMENTS BY COPYING ELEMENT 1, MAKE %(element_number)s ELEMENTS, ELEMENT NUMBER
     ** INCREMENT OF 1 AND NODE NUMBER INCREMENT OF %(node_shift)s, 1 ROW, ASSIGN TO ELSET 'EALL'
     *ELGEN, ELSET=EALL
-    1,%(element_number)s,1,%(node_shift)s,1,1,1
+    1,%(element_number)s,%(node_shift)s,1,1,1,1
     ******************************
     ** DEFINE MATERIAL CALLED 'STEEL'
     *MATERIAL,NAME=STEEL
     ******************************
-    ** DEFINE ELASTIC MATERIAL PROPERTIES, E = 1*10^7 AND POISSON'S RATIO 0
+    ** DEFINE ELASTIC MATERIAL PROPERTIES, E = 200*10^9 AND POISSON'S RATIO 0
     *ELASTIC
-    1.0E7, 0.3
+    200E9, 0.3
     ******************************
     ** DEFINE THE BEAM SECTION, ASSIGN IT TO THE ELEMENT SET 'EALL', ASSIGN IT WITH THE 'STEEL' MATERIAL AND DEFINE A
     ** 0.2 M THICK BY (depth)s M DEEP BEAM

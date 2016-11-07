@@ -1,6 +1,6 @@
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:55:04
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:09:17
    For use by  under license from Dassault Systemes or its subsidiary.
 
      5m LONG SIMPLY SUPPORTED thick BEAM WITH -100000 kN/m DISTRIBUTED LOAD, 2 EL

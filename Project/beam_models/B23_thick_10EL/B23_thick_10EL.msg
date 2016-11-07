@@ -1,6 +1,6 @@
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:57:11
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:11:51
    For use by  under license from Dassault Systemes or its subsidiary.
 
      5m LONG SIMPLY SUPPORTED thick BEAM WITH -100000 kN/m DISTRIBUTED LOAD, 10 E
@@ -82,7 +82,7 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =   0.0000    
+       USER TIME (SEC)      =  0.10000    
        SYSTEM TIME (SEC)    =  0.10000    
-       TOTAL CPU TIME (SEC) =  0.10000    
-       WALLCLOCK TIME (SEC) =          1
+       TOTAL CPU TIME (SEC) =  0.20000    
+       WALLCLOCK TIME (SEC) =          0

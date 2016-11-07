@@ -10,8 +10,8 @@ for n in mesh_size:
     for type in element:
         for beam in beam_type:
             filename = beam_input_generator(type, n, beam)
-            batch.write('cd ' + filepath + '\\'  + filename + ' \n echo Running next simulation \n')
-            batch.write('call C:\SIMULIA\Abaqus\Commands\\abaqus.bat j=' + filename + ' -seq \n')
+            batch.write('cd ' + filepath + '\\'  + filename + '& ')
+            batch.write('echo Running next simulation & ')
+            batch.write('abaqus job=' + filename + ' interactive & ')
+batch.write('PAUSE')
 batch.close()
-# os.chdir(filepath)
-# os.system('run_beam_models.bat')

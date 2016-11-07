@@ -1,6 +1,6 @@
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:56:35
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:11:14
    For use by  under license from Dassault Systemes or its subsidiary.
 
 
@@ -68,7 +68,7 @@
 
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:56:35
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:11:14
    For use by  under license from Dassault Systemes or its subsidiary.
 
                                                                                      
@@ -107,9 +107,9 @@
                         ** DEFINE MATERIAL CALLED 'STEEL'   
      LINE    30         *MATERIAL,NAME=STEEL
                         ******************************      
-                        ** DEFINE ELASTIC MATERIAL PROPERTIES, E = 1*10^7 AND POISSON'S RATIO 0     
+                        ** DEFINE ELASTIC MATERIAL PROPERTIES, E = 200*10^9 AND POISSON'S RATIO 0   
                         *ELASTIC    
-                        1.0E7, 0.3  
+                        200E9, 0.3  
      LINE    35         ******************************      
                         ** DEFINE THE BEAM SECTION, ASSIGN IT TO THE ELEMENT SET 'EALL', ASSIGN IT WITH THE 'STEEL' MATERIAL AND DEFINE A   
                         ** 0.2 M THICK BY (depth)s M DEEP BEAM      
@@ -189,7 +189,7 @@
   *END STEP
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:56:35
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:11:14
    For use by  under license from Dassault Systemes or its subsidiary.
 
          5m LONG SIMPLY SUPPORTED thin BEAM WITH -10000 kN/m DISTRIBUTED LOAD, 10 ELE
@@ -239,8 +239,8 @@
 
      TRANSVERSE SHEAR STIFFNESSES
      (ONLY USED IF THE SECTION IS ASSOCIATED WITH SHEAR DEFORMABLE BEAMS):
-       K*G(23)*A =    1.30769E+05
-       K*G(13)*A =    1.30769E+05
+       K*G(23)*A =    2.61538E+09
+       K*G(13)*A =    2.61538E+09
 
      NOTE: A "SLENDERNESS COMPENSATION FACTOR" WILL BE APPLIED TO THE TRANSVERSE SHEAR STIFFNESSES SHOWN.
            PLEASE REFER TO *TRANSVERSE SHEAR STIFFNESS IN THE USERS MANUAL FOR DETAILS.
@@ -267,7 +267,7 @@
      ELASTIC         YOUNG'S    POISSON'S
                      MODULUS      RATIO
 
-                    1.00000E+07 0.30000    
+                    2.00000E+11 0.30000    
 
 
 
@@ -309,7 +309,7 @@
          11     5.0000       0.0000       0.0000       0.0000       1.0000       0.0000                    2                                
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:56:35
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:11:14
    For use by  under license from Dassault Systemes or its subsidiary.
 
          5m LONG SIMPLY SUPPORTED thin BEAM WITH -10000 kN/m DISTRIBUTED LOAD, 10 ELE
@@ -525,7 +525,7 @@
        WALLCLOCK TIME (SEC) =          1
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:56:46
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:11:25
    For use by  under license from Dassault Systemes or its subsidiary.
 
          5m LONG SIMPLY SUPPORTED thin BEAM WITH -10000 kN/m DISTRIBUTED LOAD, 10 ELE          STEP    1  INCREMENT    1
@@ -716,71 +716,71 @@
     ELEMENT  PT SEC FOOT-   E11         
                  PT NOTE 
 
-           1   1  1      0.1107
-           1   1  5     -0.1107
-           1   2  1      0.4375
-           1   2  5     -0.4375
-           1   3  1      0.7643
-           1   3  5     -0.7643
-           2   1  1      0.9333
-           2   1  5     -0.9333
-           2   2  1       1.188
-           2   2  5      -1.188
-           2   3  1       1.442
-           2   3  5      -1.442
-           3   1  1       1.568
-           3   1  5      -1.568
-           3   2  1       1.750
-           3   2  5      -1.750
-           3   3  1       1.932
-           3   3  5      -1.932
-           4   1  1       2.016
-           4   1  5      -2.016
-           4   2  1       2.125
-           4   2  5      -2.125
-           4   3  1       2.234
-           4   3  5      -2.234
-           5   1  1       2.276
-           5   1  5      -2.276
-           5   2  1       2.312
-           5   2  5      -2.312
-           5   3  1       2.349
-           5   3  5      -2.349
-           6   1  1       2.349
-           6   1  5      -2.349
-           6   2  1       2.312
-           6   2  5      -2.312
-           6   3  1       2.276
-           6   3  5      -2.276
-           7   1  1       2.234
-           7   1  5      -2.234
-           7   2  1       2.125
-           7   2  5      -2.125
-           7   3  1       2.016
-           7   3  5      -2.016
-           8   1  1       1.932
-           8   1  5      -1.932
-           8   2  1       1.750
-           8   2  5      -1.750
-           8   3  1       1.568
-           8   3  5      -1.568
-           9   1  1       1.442
-           9   1  5      -1.442
-           9   2  1       1.188
-           9   2  5      -1.188
-           9   3  1      0.9333
-           9   3  5     -0.9333
-          10   1  1      0.7643
-          10   1  5     -0.7643
-          10   2  1      0.4375
-          10   2  5     -0.4375
-          10   3  1      0.1107
-          10   3  5     -0.1107
+           1   1  1      5.5359E-06
+           1   1  5     -5.5359E-06
+           1   2  1      2.1875E-05
+           1   2  5     -2.1875E-05
+           1   3  1      3.8214E-05
+           1   3  5     -3.8214E-05
+           2   1  1      4.6667E-05
+           2   1  5     -4.6667E-05
+           2   2  1      5.9375E-05
+           2   2  5     -5.9375E-05
+           2   3  1      7.2083E-05
+           2   3  5     -7.2083E-05
+           3   1  1      7.8423E-05
+           3   1  5     -7.8423E-05
+           3   2  1      8.7500E-05
+           3   2  5     -8.7500E-05
+           3   3  1      9.6577E-05
+           3   3  5     -9.6577E-05
+           4   1  1      1.0080E-04
+           4   1  5     -1.0080E-04
+           4   2  1      1.0625E-04
+           4   2  5     -1.0625E-04
+           4   3  1      1.1170E-04
+           4   3  5     -1.1170E-04
+           5   1  1      1.1381E-04
+           5   1  5     -1.1381E-04
+           5   2  1      1.1563E-04
+           5   2  5     -1.1563E-04
+           5   3  1      1.1744E-04
+           5   3  5     -1.1744E-04
+           6   1  1      1.1744E-04
+           6   1  5     -1.1744E-04
+           6   2  1      1.1563E-04
+           6   2  5     -1.1563E-04
+           6   3  1      1.1381E-04
+           6   3  5     -1.1381E-04
+           7   1  1      1.1170E-04
+           7   1  5     -1.1170E-04
+           7   2  1      1.0625E-04
+           7   2  5     -1.0625E-04
+           7   3  1      1.0080E-04
+           7   3  5     -1.0080E-04
+           8   1  1      9.6577E-05
+           8   1  5     -9.6577E-05
+           8   2  1      8.7500E-05
+           8   2  5     -8.7500E-05
+           8   3  1      7.8423E-05
+           8   3  5     -7.8423E-05
+           9   1  1      7.2083E-05
+           9   1  5     -7.2083E-05
+           9   2  1      5.9375E-05
+           9   2  5     -5.9375E-05
+           9   3  1      4.6667E-05
+           9   3  5     -4.6667E-05
+          10   1  1      3.8214E-05
+          10   1  5     -3.8214E-05
+          10   2  1      2.1875E-05
+          10   2  5     -2.1875E-05
+          10   3  1      5.5359E-06
+          10   3  5     -5.5359E-06
 
- MAXIMUM                 2.349                                                                                                    
+ MAXIMUM                1.1744E-04                                                                                                
  ELEMENT                        5                                                                                                 
 
- MINIMUM                -2.349                                                                                                    
+ MINIMUM               -1.1744E-04                                                                                                
  ELEMENT                        5                                                                                                 
 
 
@@ -832,22 +832,22 @@
        NODE FOOT-   U1          U2          UR3      
             NOTE
   
-          1       0.000       0.000      -39.06     
-          2      7.8401E-18  -19.16      -36.88     
-          3      2.9120E-17  -36.25      -30.94     
-          4      6.0481E-17  -49.63      -22.19     
-          5      9.8561E-17  -58.13      -11.56     
-          6      1.4000E-16  -61.04      2.2181E-13 
-          7      1.8144E-16  -58.13       11.56     
-          8      2.1952E-16  -49.63       22.19     
-          9      2.5088E-16  -36.25       30.94     
-         10      2.7216E-16  -19.16       36.88     
-         11      2.8000E-16   0.000       39.06     
+          1       0.000     -2.2500E-32 -1.9531E-03 
+          2      6.8566E-22 -9.5801E-04 -1.8438E-03 
+          3      2.5467E-21 -1.8125E-03 -1.5469E-03 
+          4      5.2894E-21 -2.4814E-03 -1.1094E-03 
+          5      8.6197E-21 -2.9063E-03 -5.7813E-04 
+          6      1.2244E-20 -3.0518E-03 -3.4248E-17 
+          7      1.5868E-20 -2.9063E-03  5.7813E-04 
+          8      1.9198E-20 -2.4814E-03  1.1094E-03 
+          9      2.1941E-20 -1.8125E-03  1.5469E-03 
+         10      2.3802E-20 -9.5801E-04  1.8438E-03 
+         11      2.4488E-20 -2.2500E-32  1.9531E-03 
 
- MAXIMUM         2.8000E-16   0.000       39.06    
+ MAXIMUM         2.4488E-20 -2.2500E-32  1.9531E-03
  AT NODE                11           1          11
 
- MINIMUM          0.000      -61.04      -39.06    
+ MINIMUM          0.000     -3.0518E-03 -1.9531E-03
  AT NODE                 1           6           1
   
   
@@ -857,14 +857,14 @@
        NODE FOOT-   RF1         RF2         RM3      
             NOTE
   
-          1      5.6086E-12  2.5000E+04   0.000     
+          1     -1.9706E-12  2.5000E+04   0.000     
          11       0.000      2.5000E+04   0.000     
 
- MAXIMUM         5.6086E-12  2.5000E+04   0.000    
- AT NODE                 1           1           1
+ MAXIMUM          0.000      2.5000E+04   0.000    
+ AT NODE                 2          11           1
 
- MINIMUM          0.000       0.000       0.000    
- AT NODE                 2           2           1
+ MINIMUM        -1.9706E-12   0.000       0.000    
+ AT NODE                 1           2           1
 
 
           THE ANALYSIS HAS BEEN COMPLETED
@@ -880,4 +880,4 @@
        USER TIME (SEC)      =   0.0000    
        SYSTEM TIME (SEC)    =   0.0000    
        TOTAL CPU TIME (SEC) =   0.0000    
-       WALLCLOCK TIME (SEC) =          0
+       WALLCLOCK TIME (SEC) =          1

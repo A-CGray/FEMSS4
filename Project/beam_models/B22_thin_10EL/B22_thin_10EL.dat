@@ -1,6 +1,6 @@
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:57:26
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:12:05
    For use by  under license from Dassault Systemes or its subsidiary.
 
 
@@ -63,17 +63,12 @@
    *******************************************************
 
 
- ***ERROR: in keyword *ELEMENT, file "B22_thin_10EL.inp", line 21: Too few 
-           nodes for element(s) of type "B22" : 1
- ***NOTE: DUE TO AN INPUT ERROR THE ANALYSIS PRE-PROCESSOR HAS BEEN UNABLE TO 
-          INTERPRET SOME DATA.  SUBSEQUENT ERRORS MAY BE CAUSED BY THIS OMISSION
-
      END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
    ***********************************************************
 
 1
 
-   Abaqus 6.13-1                                  Date 31-Oct-2016   Time 23:57:26
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:12:05
    For use by  under license from Dassault Systemes or its subsidiary.
 
                                                                                      
@@ -94,27 +89,27 @@
                         *NODE       
                         ** DEFINE LOCATION OF END NODES     
                         1, 0.0, 0.0 
-                        11, 5.0, 0.0
+                        21, 5.0, 0.0
      LINE    15         ******************************      
                         *NGEN, NSET=NALL    
                         ** GENERATE NODES ALONG LENGTH AND DEFINE NODE SET 'NALL'   
-                        1, 11, 1    
+                        1, 21, 1    
                         ******************************      
      LINE    20         **DEFINE THE FIRST 'MASTER ELEMENT' NUMBER 1 AS A B22       
                         *ELEMENT, TYPE=B22  
-                        1, 1, 2     
+                        1, 1, 2, 3  
                         ******************************      
                         ** GENERATE THE REST OF THE ELEMENTS BY COPYING ELEMENT 1, MAKE 10 ELEMENTS, ELEMENT NUMBER 
-     LINE    25         ** INCREMENT OF 1 AND NODE NUMBER INCREMENT OF 1, 1 ROW, ASSIGN TO ELSET 'EALL'     
+     LINE    25         ** INCREMENT OF 1 AND NODE NUMBER INCREMENT OF 2, 1 ROW, ASSIGN TO ELSET 'EALL'     
                         *ELGEN, ELSET=EALL  
-                        1,10,1,1,1,1,1      
+                        1,10,2,1,1,1,1      
                         ******************************      
                         ** DEFINE MATERIAL CALLED 'STEEL'   
      LINE    30         *MATERIAL,NAME=STEEL
                         ******************************      
-                        ** DEFINE ELASTIC MATERIAL PROPERTIES, E = 1*10^7 AND POISSON'S RATIO 0     
+                        ** DEFINE ELASTIC MATERIAL PROPERTIES, E = 200*10^9 AND POISSON'S RATIO 0   
                         *ELASTIC    
-                        1.0E7, 0.3  
+                        200E9, 0.3  
      LINE    35         ******************************      
                         ** DEFINE THE BEAM SECTION, ASSIGN IT TO THE ELEMENT SET 'EALL', ASSIGN IT WITH THE 'STEEL' MATERIAL AND DEFINE A   
                         ** 0.2 M THICK BY (depth)s M DEEP BEAM      
@@ -130,10 +125,10 @@
                         ** DEFINE STEP AS STATIC    
                         *STATIC     
                         ******************************      
-     LINE    50         ** DEFINE FIXED BOUNDARY AT NODE 1 LOCKED IN X AND Y DIRECTION AND AT NODE 11 LOCKED IN Y DIRECTION 
+     LINE    50         ** DEFINE FIXED BOUNDARY AT NODE 1 LOCKED IN X AND Y DIRECTION AND AT NODE 21 LOCKED IN Y DIRECTION 
                         *BOUNDARY   
                         1, 1, 2     
-                        11, 2, 2    
+                        21, 2, 2    
                         ******************************      
      LINE    55         ** DEFINE DISTRIBUTED LOAD OF -10000 KN/M IN Y DIRECTION ON ELSET 'EALL'    
                         *DLOAD      
@@ -173,32 +168,360 @@
   *NODE
   *NGEN, NSET=NALL
   *ELEMENT, TYPE=B22
-
- ***ERROR: ELEMENT 1 NODE NUMBERS MUST BE POSITIVE.
- LINE IMAGE:     1, 1, 2
   *ELGEN, ELSET=EALL
-
- ***ERROR: MASTER ELEMENT 1 HAS NOT BEEN DEFINED YET.
-
- ***ERROR: THIS SUBOPTION IS OUT OF PLACE
- LINE IMAGE: *ELASTIC
-
- ***ERROR: 1 Master elements were used for element generation before they were 
-           defined. Check the input data. See the .dat file further information.
-
- ***ERROR: Node/Element numbers defined for 1 elements must be positive 
-           integers. Check element definitions and the .dat file for details.
+  *MATERIAL,NAME=STEEL
+  *ELASTIC
   *BOUNDARY
+  *BEAM SECTION, ELSET = EALL, MATERIAL = STEEL, SECTION = RECT
+  *STEP, PERTURBATION
+  *STEP, PERTURBATION
+  *STEP, PERTURBATION
+  *STATIC
+  *BOUNDARY
+  *DLOAD
+  *EL PRINT
+  *EL PRINT, POSITION=AVERAGED AT NODES
+  *NODE PRINT
+  *END STEP
+  *STEP, PERTURBATION
+  *STATIC
+  *BOUNDARY
+  *END STEP
+1
 
- ***ERROR: THIS MODEL HAS EITHER INCORRECT OR NO ELEMENT DEFINITIONS.
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:12:05
+   For use by  under license from Dassault Systemes or its subsidiary.
+
+         5m LONG SIMPLY SUPPORTED thin BEAM WITH -10000 kN/m DISTRIBUTED LOAD, 10 ELE
+
+
+                              E L E M E N T   D E F I N I T I O N S
+
+       NUMBER   TYPE    PROPERTY    NODES FORMING ELEMENT
+                        REFERENCE
+
+          1   B22           1          1         2         3
+          2   B22           1          3         4         5
+          3   B22           1          5         6         7
+          4   B22           1          7         8         9
+          5   B22           1          9        10        11
+          6   B22           1         11        12        13
+          7   B22           1         13        14        15
+          8   B22           1         15        16        17
+          9   B22           1         17        18        19
+         10   B22           1         19        20        21
 
 
 
 
 
-          THE PROGRAM HAS DISCOVERED     7 FATAL ERRORS
+                                 B E A M   S E C T I O N
 
-               ** EXECUTION IS TERMINATED **
+
+
+
+  SECTION NUMBER     1 IS USED WITH BEAMS IN A PLANE
+
+     SECTION TYPE:   RECTANGULAR     
+     MATERIAL NAME:  STEEL                                                                           
+     WIDTH IN 1-DIRECTION                     =   0.20000    
+     WIDTH IN 2-DIRECTION                     =   0.20000    
+
+     ORIENTATION OF THE SECTION 1-AXIS        =   (  0.0000    ,  0.0000    , -1.0000    )
+     SECTION POISSON RATIO                    =      0.0000     (USED WITH LINEAR AND QUADRATIC BEAM ELEMENTS ONLY)
+
+     TOTAL NUMBER OF INTEGRATION POINTS IN THE SECTION                 =    5
+     NUMBER OF INTEGRATION POINTS IN THE 2-DIRECTION OF THE SECTION =  5
+
+     AREA                                     =   4.0000000E-02
+     MOMENT OF INERTIA I(11)                  =   1.3333333E-04
+     CENTROID COORDINATES (1,2)               =  (  0.000000    , 8.1315163E-18)
+
+     TRANSVERSE SHEAR STIFFNESSES
+     (ONLY USED IF THE SECTION IS ASSOCIATED WITH SHEAR DEFORMABLE BEAMS):
+       K*G(23)*A =    2.61538E+09
+       K*G(13)*A =    2.61538E+09
+
+     NOTE: A "SLENDERNESS COMPENSATION FACTOR" WILL BE APPLIED TO THE TRANSVERSE SHEAR STIFFNESSES SHOWN.
+           PLEASE REFER TO *TRANSVERSE SHEAR STIFFNESS IN THE USERS MANUAL FOR DETAILS.
+
+
+
+
+
+                         P H Y S I C A L   C O N S T A N T S
+
+
+
+
+
+
+                         M A T E R I A L   D E S C R I P T I O N
+
+
+
+
+  MATERIAL NAME: STEEL                                                                           
+
+
+     ELASTIC         YOUNG'S    POISSON'S
+                     MODULUS      RATIO
+
+                    2.00000E+11 0.30000    
+
+
+
+
+
+                                 E L E M E N T   S E T S
+
+
+  SET    EALL                                                                            
+  MEMBERS                    1         2         3         4         5         6         7         8         9        10
+
+
+
+                                    N O D E   S E T S
+
+
+  SET    NALL                                                                            
+  MEMBERS                    1         2         3         4         5         6         7         8         9        10        11        12
+                            13        14        15        16        17        18        19        20        21
+
+
+
+
+
+                                 N O D E   D E F I N I T I O N S
+
+       NODE                COORDINATES                             NORMAL                    SINGLE POINT CONSTRAINTS 
+      NUMBER                                                                                    TYPE   PLUS   DOF
+
+          1     0.0000       0.0000       0.0000       0.0000       1.0000       0.0000                  1 2                                
+          2    0.25000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+          3    0.50000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+          4    0.75000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+          5     1.0000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+          6     1.2500       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+          7     1.5000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+          8     1.7500       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+          9     2.0000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         10     2.2500       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         11     2.5000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         12     2.7500       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         13     3.0000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         14     3.2500       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         15     3.5000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         16     3.7500       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         17     4.0000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         18     4.2500       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         19     4.5000       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         20     4.7500       0.0000       0.0000       0.0000       1.0000       0.0000                                                     
+         21     5.0000       0.0000       0.0000       0.0000       1.0000       0.0000                    2                                
+1
+
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:12:05
+   For use by  under license from Dassault Systemes or its subsidiary.
+
+         5m LONG SIMPLY SUPPORTED thin BEAM WITH -10000 kN/m DISTRIBUTED LOAD, 10 ELE
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+          FIXED TIME INCREMENTS
+          TIME INCREMENT IS                                    2.220E-16
+          TIME PERIOD IS                                       2.220E-16
+     GLOBAL STABILIZATION CONTROL IS NOT USED
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+     EXTRAPOLATION WILL NOT BE USED
+
+     CHARACTERISTIC ELEMENT LENGTH     0.250    
+
+     DETAILS REGARDING ACTUAL SOLUTION WAVEFRONT REQUESTED
+
+     DETAILED OUTPUT OF DIAGNOSTICS TO DATABASE REQUESTED
+
+     PRINT OF INCREMENT NUMBER, TIME, ETC., TO THE MESSAGE FILE EVERY     1  INCREMENTS
+
+
+
+                              D A T A B A S E   O U T P U T   G R O U P       1
+
+
+  THE FOLLOWING  FIELD   OUTPUT WILL BE WRITTEN EVERY        1 INCREMENT(S)
+
+
+
+   THE FOLLOWING OUTPUT WILL BE WRITTEN FOR ALL ELEMENTS OF TYPE B22.  OUTPUT IS AT THE INTEGRATION 
+   POINTS.
+
+          S           E           
+
+     VALUES ARE OUTPUT AT THE FOLLOWING SECTION POINTS    1    5
+
+
+
+   THE FOLLOWING OUTPUT WILL BE WRITTEN FOR ALL NODES
+
+
+            U         RF        CF        UR        RM        CM      
+
+
+
+  END OF DATABASE OUTPUT GROUP    1
+
+
+
+
+                              D A T A B A S E   O U T P U T   G R O U P       2
+
+
+  THE FOLLOWING HISTORY  OUTPUT WILL BE WRITTEN EVERY        1 INCREMENT(S)
+
+
+
+   THE FOLLOWING ENERGY OUTPUT QUANTITIES WILL BE WRITTEN FOR THE WHOLE MODEL
+
+          ALLKE       ALLSE       ALLWK       ALLPD       ALLCD       ALLVD       ALLKL       ALLAE       ALLQB       
+
+          ALLEE       ALLIE       ETOTAL      ALLFD       ALLJD       ALLSD       ALLDMD      
+
+  END OF DATABASE OUTPUT GROUP    2
+
+
+
+
+
+                                    E L E M E N T   P R I N T
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED AT EVERY 1 INCREMENT FOR ALL ELEMENTS OF TYPE B22.  OUTPUT IS AT 
+   THE INTEGRATION POINTS.
+
+     SUMMARIES WILL BE PRINTED WHERE APPLICABLE
+
+          TABLE     1COORD1      COORD2      
+
+
+
+   THE FOLLOWING TABLE IS PRINTED AT EVERY 1 INCREMENT FOR ALL ELEMENTS OF TYPE B22.  OUTPUT IS AT 
+   THE INTEGRATION POINTS.
+
+     VALUES ARE PRINTED  AT THE FOLLOWING SECTION POINTS    1    5
+
+     SUMMARIES WILL BE PRINTED WHERE APPLICABLE
+
+          TABLE     2S11         
+
+
+
+   THE FOLLOWING TABLE IS PRINTED AT EVERY 1 INCREMENT FOR ALL ELEMENTS OF TYPE B22.  OUTPUT IS AT 
+   THE INTEGRATION POINTS.
+
+     VALUES ARE PRINTED  AT THE FOLLOWING SECTION POINTS    1    5
+
+     SUMMARIES WILL BE PRINTED WHERE APPLICABLE
+
+          TABLE     3E11         
+
+
+
+   THE FOLLOWING TABLE IS PRINTED AT EVERY 1 INCREMENT FOR ALL ELEMENTS OF TYPE B22.  OUTPUT IS 
+   AVERAGED AT THE NODES.
+
+     VALUES ARE PRINTED  AT THE FOLLOWING SECTION POINTS    1    5
+
+     SUMMARIES WILL BE PRINTED WHERE APPLICABLE
+
+          TABLE     4S11         
+
+
+
+
+                                       N O D E   P R I N T
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES AT EVERY 1 INCREMENT
+
+     SUMMARIES WILL BE PRINTED
+
+          TABLE  1  U1        U2        UR3     
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES AT EVERY 1 INCREMENT
+
+     SUMMARIES WILL BE PRINTED
+
+          TABLE  2  RF1       RF2       RM3     
+
+
+
+
+
+                               D I S T R I B U T E D   L O A D S
+
+
+   ELEMENT LOAD     AMP.     MAGNITUDE   TRAC. VECTOR                                            ORI.     FLW.  CONST.
+           TYPE     REF.
+
+         1 PY                -10000.    
+         2 PY                -10000.    
+         3 PY                -10000.    
+         4 PY                -10000.    
+         5 PY                -10000.    
+         6 PY                -10000.    
+         7 PY                -10000.    
+         8 PY                -10000.    
+         9 PY                -10000.    
+        10 PY                -10000.    
+
+
+
+
+                              B O U N D A R Y   C O N D I T I O N S
+
+
+      NODE      DOF     AMP.    MAGNITUDE                 NODE      DOF     AMP.    MAGNITUDE
+                        REF.                                                REF.
+
+           1    1     (RAMP)     0.0000                        1    2     (RAMP)     0.0000               
+          21    2     (RAMP)     0.0000               
+
+     - (RAMP) OR (STEP) - INDICATE USE OF DEFAULT AMPLITUDES ASSOCIATED WITH THE STEP
+
+
+
+
+                      C O N S T R A I N T    C H E C K S
+
+            PERFORM CONSTRAINT CHECKS:                        YES
+            AUTOMATIC MODEL CHANGES:                          YES
+            CONSTRAINT CHECKS FREQUENCY:                             1
+            TERMINATE ANALYSIS IF OVERCONSTRAINTS ARE FOUND:  NO             
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                    10
+          NUMBER OF NODES IS                                       51
+          NUMBER OF NODES DEFINED BY THE USER                      21
+          NUMBER OF INTERNAL NODES GENERATED BY THE PROGRAM        30
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   63
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
 
 
 
@@ -207,7 +530,345 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =   0.0000    
+       USER TIME (SEC)      =  0.10000    
        SYSTEM TIME (SEC)    =  0.10000    
-       TOTAL CPU TIME (SEC) =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.20000    
+       WALLCLOCK TIME (SEC) =          0
+1
+
+   Abaqus 6.13-1                                  Date 01-Nov-2016   Time 19:12:16
+   For use by  under license from Dassault Systemes or its subsidiary.
+
+         5m LONG SIMPLY SUPPORTED thin BEAM WITH -10000 kN/m DISTRIBUTED LOAD, 10 ELE          STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+          FIXED TIME INCREMENTS
+          TIME INCREMENT IS                                    2.220E-16
+          TIME PERIOD IS                                       2.220E-16
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION         (MBYTES)           (MBYTES)
+  
+     1         3.19E+003               13                 20
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                                INCREMENT     1 SUMMARY
+
+
+ TIME INCREMENT COMPLETED  2.220E-16,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED       2.220E-16,  TOTAL TIME COMPLETED         0.00    
+
+
+
+                                                  E L E M E N T   O U T P U T
+
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE B22 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       COORD1      COORD2      
+                NOTE 
+
+           1   1         0.1057       0.000
+           1   2         0.3943       0.000
+           2   1         0.6057       0.000
+           2   2         0.8943       0.000
+           3   1          1.106       0.000
+           3   2          1.394       0.000
+           4   1          1.606       0.000
+           4   2          1.894       0.000
+           5   1          2.106       0.000
+           5   2          2.394       0.000
+           6   1          2.606       0.000
+           6   2          2.894       0.000
+           7   1          3.106       0.000
+           7   2          3.394       0.000
+           8   1          3.606       0.000
+           8   2          3.894       0.000
+           9   1          4.106       0.000
+           9   2          4.394       0.000
+          10   1          4.606       0.000
+          10   2          4.894       0.000
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE B22 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT SEC FOOT-   S11         
+                 PT NOTE 
+
+           1   1  1      1.9393E+06
+           1   1  5     -1.9393E+06
+           1   2  1      6.8107E+06
+           1   2  5     -6.8107E+06
+           2   1  1      9.9806E+06
+           2   1  5     -9.9806E+06
+           2   2  1      1.3769E+07
+           2   2  5     -1.3769E+07
+           3   1  1      1.6147E+07
+           3   1  5     -1.6147E+07
+           3   2  1      1.8853E+07
+           3   2  5     -1.8853E+07
+           4   1  1      2.0438E+07
+           4   1  5     -2.0438E+07
+           4   2  1      2.2062E+07
+           4   2  5     -2.2062E+07
+           5   1  1      2.2854E+07
+           5   1  5     -2.2854E+07
+           5   2  1      2.3396E+07
+           5   2  5     -2.3396E+07
+           6   1  1      2.3396E+07
+           6   1  5     -2.3396E+07
+           6   2  1      2.2854E+07
+           6   2  5     -2.2854E+07
+           7   1  1      2.2062E+07
+           7   1  5     -2.2062E+07
+           7   2  1      2.0438E+07
+           7   2  5     -2.0438E+07
+           8   1  1      1.8853E+07
+           8   1  5     -1.8853E+07
+           8   2  1      1.6147E+07
+           8   2  5     -1.6147E+07
+           9   1  1      1.3769E+07
+           9   1  5     -1.3769E+07
+           9   2  1      9.9806E+06
+           9   2  5     -9.9806E+06
+          10   1  1      6.8107E+06
+          10   1  5     -6.8107E+06
+          10   2  1      1.9393E+06
+          10   2  5     -1.9393E+06
+
+ MAXIMUM                2.3396E+07                                                                                                
+ ELEMENT                        5                                                                                                 
+
+ MINIMUM               -2.3396E+07                                                                                                
+ ELEMENT                        5                                                                                                 
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE B22 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT SEC FOOT-   E11         
+                 PT NOTE 
+
+           1   1  1      9.6965E-06
+           1   1  5     -9.6965E-06
+           1   2  1      3.4053E-05
+           1   2  5     -3.4053E-05
+           2   1  1      4.9903E-05
+           2   1  5     -4.9903E-05
+           2   2  1      6.8847E-05
+           2   2  5     -6.8847E-05
+           3   1  1      8.0734E-05
+           3   1  5     -8.0734E-05
+           3   2  1      9.4266E-05
+           3   2  5     -9.4266E-05
+           4   1  1      1.0219E-04
+           4   1  5     -1.0219E-04
+           4   2  1      1.1031E-04
+           4   2  5     -1.1031E-04
+           5   1  1      1.1427E-04
+           5   1  5     -1.1427E-04
+           5   2  1      1.1698E-04
+           5   2  5     -1.1698E-04
+           6   1  1      1.1698E-04
+           6   1  5     -1.1698E-04
+           6   2  1      1.1427E-04
+           6   2  5     -1.1427E-04
+           7   1  1      1.1031E-04
+           7   1  5     -1.1031E-04
+           7   2  1      1.0219E-04
+           7   2  5     -1.0219E-04
+           8   1  1      9.4266E-05
+           8   1  5     -9.4266E-05
+           8   2  1      8.0734E-05
+           8   2  5     -8.0734E-05
+           9   1  1      6.8847E-05
+           9   1  5     -6.8847E-05
+           9   2  1      4.9903E-05
+           9   2  5     -4.9903E-05
+          10   1  1      3.4053E-05
+          10   1  5     -3.4053E-05
+          10   2  1      9.6965E-06
+          10   2  5     -9.6965E-06
+
+ MAXIMUM                1.1698E-04                                                                                                
+ ELEMENT                        5                                                                                                 
+
+ MINIMUM               -1.1698E-04                                                                                                
+ ELEMENT                        5                                                                                                 
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE B22 AVERAGED AT THE NODES
+
+       NODE  SEC FOOT-   S11         
+              PT NOTE 
+
+           1   1         1.5625E+05
+           1   5        -1.5625E+05
+           2   1         4.3750E+06
+           2   5        -4.3750E+06
+           3   1         8.5937E+06
+           3   5        -8.5937E+06
+           4   1         1.1875E+07
+           4   5        -1.1875E+07
+           5   1         1.5156E+07
+           5   5        -1.5156E+07
+           6   1         1.7500E+07
+           6   5        -1.7500E+07
+           7   1         1.9844E+07
+           7   5        -1.9844E+07
+           8   1         2.1250E+07
+           8   5        -2.1250E+07
+           9   1         2.2656E+07
+           9   5        -2.2656E+07
+          10   1         2.3125E+07
+          10   5        -2.3125E+07
+          11   1         2.3594E+07
+          11   5        -2.3594E+07
+          12   1         2.3125E+07
+          12   5        -2.3125E+07
+          13   1         2.2656E+07
+          13   5        -2.2656E+07
+          14   1         2.1250E+07
+          14   5        -2.1250E+07
+          15   1         1.9844E+07
+          15   5        -1.9844E+07
+          16   1         1.7500E+07
+          16   5        -1.7500E+07
+          17   1         1.5156E+07
+          17   5        -1.5156E+07
+          18   1         1.1875E+07
+          18   5        -1.1875E+07
+          19   1         8.5937E+06
+          19   5        -8.5937E+06
+          20   1         4.3750E+06
+          20   5        -4.3750E+06
+          21   1         1.5625E+05
+          21   5        -1.5625E+05
+
+ MAXIMUM                2.3594E+07                                                                                                
+  NODE                         11                                                                                                 
+
+ MINIMUM               -2.3594E+07                                                                                                
+  NODE                         11                                                                                                 
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   U1          U2          UR3      
+            NOTE
+  
+          1       0.000     -2.4167E-32 -1.9531E-03 
+          2      1.7754E-22 -4.8811E-04 -1.9248E-03 
+          3      6.8566E-22 -9.6231E-04 -1.8437E-03 
+          4      1.4876E-21 -1.4099E-03 -1.7158E-03 
+          5      2.5467E-21 -1.8201E-03 -1.5469E-03 
+          6      3.8262E-21 -2.1833E-03 -1.3428E-03 
+          7      5.2894E-21 -2.4915E-03 -1.1094E-03 
+          8      6.8994E-21 -2.7379E-03 -8.5254E-04 
+          9      8.6197E-21 -2.9177E-03 -5.7812E-04 
+         10      1.0413E-20 -3.0270E-03 -2.9199E-04 
+         11      1.2244E-20 -3.0637E-03  5.9930E-17 
+         12      1.4074E-20 -3.0270E-03  2.9199E-04 
+         13      1.5868E-20 -2.9177E-03  5.7812E-04 
+         14      1.7588E-20 -2.7379E-03  8.5254E-04 
+         15      1.9198E-20 -2.4915E-03  1.1094E-03 
+         16      2.0662E-20 -2.1833E-03  1.3428E-03 
+         17      2.1941E-20 -1.8201E-03  1.5469E-03 
+         18      2.3000E-20 -1.4099E-03  1.7158E-03 
+         19      2.3802E-20 -9.6231E-04  1.8437E-03 
+         20      2.4310E-20 -4.8811E-04  1.9248E-03 
+         21      2.4488E-20 -2.4167E-32  1.9531E-03 
+
+ MAXIMUM         2.4488E-20 -2.4167E-32  1.9531E-03
+ AT NODE                21          21          21
+
+ MINIMUM          0.000     -3.0637E-03 -1.9531E-03
+ AT NODE                 1          11           1
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   RF1         RF2         RM3      
+            NOTE
+  
+          1      5.6280E-13  2.5000E+04   0.000     
+         21       0.000      2.5000E+04   0.000     
+
+ MAXIMUM         5.6280E-13  2.5000E+04   0.000    
+ AT NODE                 1           1           1
+
+ MINIMUM          0.000       0.000       0.000    
+ AT NODE                 2           2           1
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH      1 WARNING MESSAGES ON THE DAT FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   0.0000    
+       SYSTEM TIME (SEC)    =   0.0000    
+       TOTAL CPU TIME (SEC) =   0.0000    
        WALLCLOCK TIME (SEC) =          0
