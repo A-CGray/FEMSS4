@@ -44,7 +44,7 @@ options = {
     'moldflowFiles':[],
     'moldflowMaterial':OFF,
     'mp_mode':THREADS,
-    'mp_mode_requested':MPI,
+    'mp_mode_requested':THREADS,
     'mpipre':1,
     'multiphysics':OFF,
     'noDmpDirect':[],
@@ -79,7 +79,7 @@ options = {
     'substructure':OFF,
     'symmetricModelGeneration':OFF,
     'thermal':OFF,
-    'tmpdir':'/tmp',
+    'tmpdir':'C:\\Users\\Ali\\AppData\\Local\\Temp',
     'tracer':OFF,
     'visco':OFF,
 }

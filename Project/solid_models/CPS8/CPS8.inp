@@ -41,7 +41,7 @@ BOTTOM, TOP, 20, 100
 ******************************
 **ASSIGN ELEMENTS IN TOP ROW TO ELSET "TOP"
 *ELSET, ELSET=TOP, GENERATE
-81, 100, 1
+91, 100, 1
 ******************************
 **CREATE NODE SET AT L/5 FOR PLOTS
 *NSET, NSET=CUT, GENERATE

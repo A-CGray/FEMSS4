@@ -1,7 +1,7 @@
 1
 
-   Abaqus 6.12-1                                  Date 04-Nov-2016   Time 16:55:03
-   For use at  under license from Dassault Systemes or its subsidiary.
+   Abaqus 6.13-1                                  Date 10-Nov-2016   Time 23:47:25
+   For use by  under license from Dassault Systemes or its subsidiary.
 
  5m LONG BY 1m DEEP BY 0.2m THICK SIMPLY SUPPORTED BEAM WITH 100 KN/M DISTRIBUTED
                                                                                  
@@ -47,9 +47,9 @@
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =  1.00000E-02
-       ELAPSED SYSTEM TIME (SEC)    =  1.00000E-02
-       ELAPSED TOTAL CPU TIME (SEC) =  2.00000E-02
+       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
@@ -82,7 +82,7 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =  0.18000    
-       SYSTEM TIME (SEC)    =  0.10000    
-       TOTAL CPU TIME (SEC) =  0.28000    
+       USER TIME (SEC)      =   0.0000    
+       SYSTEM TIME (SEC)    =  0.20000    
+       TOTAL CPU TIME (SEC) =  0.20000    
        WALLCLOCK TIME (SEC) =          0
