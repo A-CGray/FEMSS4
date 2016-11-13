@@ -1,6 +1,6 @@
 1
 
-   Abaqus 6.12-1                                  Date 04-Nov-2016   Time 16:36:30
+   Abaqus 6.12-1                                  Date 13-Nov-2016   Time 21:21:05
    For use at  under license from Dassault Systemes or its subsidiary.
 
 
@@ -23,7 +23,7 @@
                    on the SIMULIA web site at
                    http://www.simulia.com/academics/academic_support.html.
  
-                          On machine w4069.see.ed.ac.uk 
+                          On machine tlf20.see.ed.ac.uk 
                           you are authorized to run
                           Abaqus/Standard until 30-Jun-2017
 
@@ -76,7 +76,7 @@
 
 1
 
-   Abaqus 6.12-1                                  Date 04-Nov-2016   Time 16:36:30
+   Abaqus 6.12-1                                  Date 13-Nov-2016   Time 21:21:06
    For use at  under license from Dassault Systemes or its subsidiary.
 
                                                                                      
@@ -104,7 +104,7 @@
                     *NGEN, NSET=TOP 
                     2001, 2021, 1   
                     ******************************  
-                    ** CREATE NODES BETWEEN "LEFT" AND "RIGHT", 20 NODES BETWEEN ENDS WITH NODE NUMBERING STEP OF 1 
+                    ** CREATE NODES BETWEEN "TOP" AND "BOTTOM", 20 NODES BETWEEN ENDS WITH NODE NUMBERING STEP OF 100       
      LINE    20     *NFILL  
                     BOTTOM, TOP, 20, 100    
                     ******************************  
@@ -112,7 +112,7 @@
                     *ELEMENT, TYPE=CPS4I    
      LINE    25     1, 1, 2, 102, 101       
                     ******************************  
-                    ** GENERATE THE REST OF THE ELEMENTS BY COPYING ELEMENT 1, 4 ELEMENTS IN X, 4 ELEMENTS IN Y, NODE NUMBER INCREMENT OF 4 IN X, NODE NUMBER INCREMENT OF 100 IN Y, ELEMENT NUMBER INCREMENT OF 4 FROM ROW TO ROW, ASSIGN ELEMENTS TO SET "EALL"   
+                    ** GENERATE THE REST OF THE ELEMENTS BY COPYING ELEMENT 1, 20 ELEMENTS IN X, 20 ELEMENTS IN Y, NODE NUMBER INCREMENT OF 1 IN X, NODE NUMBER INCREMENT OF 100 IN Y, ELEMENT NUMBER INCREMENT OF 100 FROM ROW TO ROW, ASSIGN ELEMENTS TO SET "EALL"       
                     *ELGEN, ELSET=EALL      
                     1,20,1,1,20,100,20      
      LINE    30     ******************************  
@@ -123,7 +123,7 @@
      LINE    35     *ELASTIC
                     200E9, 0.3      
                     ******************************  
-                    ** CREATE SECTION FROM MATERIAL "STEEL" AND ASSIGN IT TO ELEMENT SET "EALL", THICKNESS IS 0.1M  
+                    ** CREATE SECTION FROM MATERIAL "STEEL" AND ASSIGN IT TO ELEMENT SET "EALL", THICKNESS IS 0.2M  
                     *SOLID SECTION, MATERIAL=STEEL, ELSET=EALL      
      LINE    40     0.2     
                     ******************************  
@@ -131,45 +131,41 @@
                     *ELSET, ELSET=TOP, GENERATE     
                     381, 400, 1     
      LINE    45     ******************************  
-                    **CREATE NODE SET AT L/5 FOR PLOTS      
-                    *NSET, NSET=CUT, GENERATE       
-                    5, 2005, 100    
-                    ******************************  
-     LINE    50     **ASK FOR HISTORY AND MODEL DATA TO BE INCLUDED IN RESULTS FILE 
+                    **ASK FOR HISTORY AND MODEL DATA TO BE INCLUDED IN RESULTS FILE 
                     *PREPRINT, ECHO=YES, MODEL=YES, HISTORY=YES     
                     ******************************  
                     ** BEGIN LINEAR STEP    
-                    *STEP, PERTURBATION     
-     LINE    55     ******************************  
+     LINE    50     *STEP, PERTURBATION     
+                    ******************************  
                     ** DEFINE STEP AS STATIC
                     *STATIC 
                     ******************************  
-                    ** DEFINE FIXED BOUNDARY AT NODE 1 LOCKED IN X AND Y DIRECTION AND AT NODE 21 LOCKED IN Y DIRECTION     
-     LINE    60     *BOUNDARY       
+     LINE    55     ** DEFINE FIXED BOUNDARY AT NODE 1 LOCKED IN X AND Y DIRECTION AND AT NODE 21 LOCKED IN Y DIRECTION     
+                    *BOUNDARY       
                     1, 1, 2 
                     21, 2, 2
                     ******************************  
-                    ** DEFINE CONCENTRATED LOAD OF -0.5N IN Y DIRECTION ON EACH END CORNER NODE     
-     LINE    65     *DLOAD  
+     LINE    60     ** DEFINE CONCENTRATED LOAD OF -0.5N IN Y DIRECTION ON EACH END CORNER NODE     
+                    *DLOAD  
                     TOP, P3, 500E3  
                     ******************************  
                     ** ASK ABAQUS TO PRINT COORDINATE, STRESS AND STRAIN FOR EACH ELEMENT (AT INTEGRATION POINTS INSIDE CELLS)      
-                    *EL PRINT       
-     LINE    70     COORD   
+     LINE    65     *EL PRINT       
+                    COORD   
                     S       
                     E       
                     ******************************  
-                    ** ASK ABAQUS TO PRINT STRESS VALUES AT NODES   
-     LINE    75     *EL PRINT, POSITION=AVERAGED AT NODES   
+     LINE    70     ** ASK ABAQUS TO PRINT STRESS VALUES AT NODES   
+                    *EL PRINT, POSITION=AVERAGED AT NODES   
                     S       
                     ******************************  
                     ** ASK ABAQUS TO PRINT FORCES AND DISPLACEMENTS AT NODES
-                    *NODE PRINT     
-     LINE    80     U       
+     LINE    75     *NODE PRINT     
+                    U       
                     RF      
                     ******************************  
                     ** END THE STEP 
-                    *END STEP       
+     LINE    80     *END STEP       
                     --------------------------------------------------------------------------------
                         5   10   15   20   25   30   35   40   45   50   55   60   65   70   75   80
                     --------------------------------------------------------------------------------
@@ -200,7 +196,6 @@
   *ELEMENT, TYPE=CPS4I
   *ELGEN, ELSET=EALL
   *ELSET, ELSET=TOP, GENERATE
-  *NSET, NSET=CUT, GENERATE
   *MATERIAL,NAME=STEEL
   *ELASTIC
   *SOLID SECTION, MATERIAL=STEEL, ELSET=EALL
@@ -222,7 +217,7 @@
   *END STEP
 1
 
-   Abaqus 6.12-1                                  Date 04-Nov-2016   Time 16:36:30
+   Abaqus 6.12-1                                  Date 13-Nov-2016   Time 21:21:06
    For use at  under license from Dassault Systemes or its subsidiary.
 
      5m LONG BY 1m DEEP BY 0.2m THICK SIMPLY SUPPORTED BEAM WITH 100 KN/M DISTRIBUTED
@@ -728,10 +723,6 @@
                                     N O D E   S E T S
 
 
-  SET    CUT                                                                             
-  MEMBERS                    5       105       205       305       405       505       605       705       805       905      1005      1105
-                          1205      1305      1405      1505      1605      1705      1805      1905      2005
-
   SET    BOTTOM                                                                          
   MEMBERS                    1         2         3         4         5         6         7         8         9        10        11        12
                             13        14        15        16        17        18        19        20        21
@@ -1192,7 +1183,7 @@
        2021     5.0000       1.0000       0.0000                                                                       
 1
 
-   Abaqus 6.12-1                                  Date 04-Nov-2016   Time 16:36:30
+   Abaqus 6.12-1                                  Date 13-Nov-2016   Time 21:21:06
    For use at  under license from Dassault Systemes or its subsidiary.
 
      5m LONG BY 1m DEEP BY 0.2m THICK SIMPLY SUPPORTED BEAM WITH 100 KN/M DISTRIBUTED
@@ -1404,13 +1395,13 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =  0.24000    
-       SYSTEM TIME (SEC)    =  5.00000E-02
-       TOTAL CPU TIME (SEC) =  0.29000    
-       WALLCLOCK TIME (SEC) =          0
+       USER TIME (SEC)      =  0.11000    
+       SYSTEM TIME (SEC)    =  1.00000E-02
+       TOTAL CPU TIME (SEC) =  0.12000    
+       WALLCLOCK TIME (SEC) =          1
 1
 
-   Abaqus 6.12-1                                  Date 04-Nov-2016   Time 16:36:32
+   Abaqus 6.12-1                                  Date 13-Nov-2016   Time 21:21:06
    For use at  under license from Dassault Systemes or its subsidiary.
 
      5m LONG BY 1m DEEP BY 0.2m THICK SIMPLY SUPPORTED BEAM WITH 100 KN/M DISTRIBUTED          STEP    1  INCREMENT    1
@@ -7259,7 +7250,7 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =  0.29000    
-       SYSTEM TIME (SEC)    =  9.00000E-02
-       TOTAL CPU TIME (SEC) =  0.38000    
+       USER TIME (SEC)      =  0.11000    
+       SYSTEM TIME (SEC)    =  1.00000E-02
+       TOTAL CPU TIME (SEC) =  0.12000    
        WALLCLOCK TIME (SEC) =          1

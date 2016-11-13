@@ -1,6 +1,6 @@
 1
 
-   Abaqus 6.12-1                                  Date 13-Nov-2016   Time 21:21:06
+   Abaqus 6.12-1                                  Date 13-Nov-2016   Time 21:24:03
    For use at  under license from Dassault Systemes or its subsidiary.
 
  5m LONG BY 1m DEEP BY 0.2m THICK SIMPLY SUPPORTED BEAM WITH 100 KN/M DISTRIBUTED
@@ -24,7 +24,7 @@
 
      EXTRAPOLATION WILL NOT BE USED
 
-     CHARACTERISTIC ELEMENT LENGTH     0.150    
+     CHARACTERISTIC ELEMENT LENGTH     8.750E-02
 
      DETAILS REGARDING ACTUAL SOLUTION WAVEFRONT REQUESTED
 
@@ -47,8 +47,8 @@
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
-       ELAPSED SYSTEM TIME (SEC)    =  1.00000E-02
+       ELAPSED USER TIME (SEC)      =  1.00000E-02
+       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
        ELAPSED TOTAL CPU TIME (SEC) =  1.00000E-02
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
@@ -83,6 +83,6 @@
 
      JOB TIME SUMMARY
        USER TIME (SEC)      =  0.11000    
-       SYSTEM TIME (SEC)    =  1.00000E-02
-       TOTAL CPU TIME (SEC) =  0.12000    
-       WALLCLOCK TIME (SEC) =          1
+       SYSTEM TIME (SEC)    =  2.00000E-02
+       TOTAL CPU TIME (SEC) =  0.13000    
+       WALLCLOCK TIME (SEC) =          0

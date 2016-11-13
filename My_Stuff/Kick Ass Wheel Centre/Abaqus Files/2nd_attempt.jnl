@@ -1,0 +1,35 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openStep(
+    '/home/s1208454/FEMSS4/My_Stuff/Kick Ass Wheel Centre/Wheel Centre Blank2.step'
+    , scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=False, dimensionality=
+    THREE_D, geometryFile=mdb.acis, name='Wheel Centre Blank2', scale=0.001, 
+    type=DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].PartitionCellBySweepEdge(
+    cells=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), edges=(
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[163], 
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[164]), sweepPath=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[97])
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].PartitionCellByExtrudeEdge(
+    cells=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].cells.getSequenceFromMask(
+    ('[#2 ]', ), ), edges=(
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[104], 
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[105]), line=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[4], sense=REVERSE)
+# Save by s1208454 on 2016_11_13-16.18.39; build 6.12-1 2012_03_13-20.21.46 119612
