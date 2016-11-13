@@ -4159,3 +4159,2555 @@ mdb.jobs['model-test']._Message(COMPLETED, {'phase': STANDARD_PHASE,
 mdb.jobs['model-test']._Message(JOB_COMPLETED, {
     'time': 'Fri Nov 11 12:32:01 2016', 'jobName': 'model-test'})
 # Save by Ali on 2016_11_11-13.12.09; build 6.13-1 2013_05_16-03.28.56 126354
+# Save by Ali on 2016_11_11-14.13.23; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].loads['Torque'].setValues(cm3=400000.0, distributionType=
+    UNIFORM, field='')
+mdb.models['Model-1'].loads['Torque'].setValuesInStep(cm3=-400000.0, stepName=
+    'CW-Torque')
+mdb.models['Model-1'].StaticStep(name='y-torque', previous='neg-axial')
+mdb.models['Model-1'].optimizationTasks['min_vol'].TopologyPlanarSymmetry(axis=
+    AXIS_2, csys=None, ignoreFrozenArea=False, name='y-sym', region=MODEL)
+mdb.models['Model-1'].StaticStep(name='x-torque', previous='y-torque')
+mdb.models['Model-1'].Moment(cm2=10000.0, createStepName='y-torque', 
+    distributionType=UNIFORM, field='', localCsys=None, name='y-torque', 
+    region=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[5], )))
+del mdb.models['Model-1'].loads['y-torque']
+mdb.models['Model-1'].loads['Torque'].reset('pos-axial')
+mdb.models['Model-1'].loads['Torque'].setValuesInStep(cm3=0.0, stepName=
+    'pos-axial')
+mdb.models['Model-1'].loads['Torque'].setValuesInStep(cm2=10000.0, stepName=
+    'y-torque')
+mdb.models['Model-1'].loads['Torque'].setValuesInStep(cm1=10000.0, cm2=0.0, 
+    stepName='x-torque')
+mdb.models['Model-1'].StaticStep(name='xy-torque', previous='x-torque')
+mdb.models['Model-1'].loads['Torque'].setValuesInStep(cm1=7071.0, cm2=7071.0, 
+    stepName='xy-torque')
+mdb.models['Model-1'].loads['-Axial'].deactivate('y-torque')
+mdb.models['Model-1'].boundaryConditions['hub-washers'].reset('neg-axial')
+mdb.models['Model-1'].boundaryConditions['hub-washers'].setValuesInStep(
+    stepName='neg-axial', u3=FREED, ur3=0.0)
+mdb.models['Model-1'].boundaryConditions['hub-washers'].setValuesInStep(
+    stepName='y-torque', u3=0.0, ur3=FREED)
+mdb.jobs['model-test'].submit(consistencyChecking=OFF)
+mdb.jobs['model-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'Geoff', 'handle': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_Wheel Centre Blank-1_S,ASSEMBLY__T0_Wheel Centre Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_Wheel Centre Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_Wheel Centre Blank-1_SN,ASSEMBLY__T0_Wheel Centre Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1084 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 984 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\model-test.odb', 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'Geoff', 'handle': 12516, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 1.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 2, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 2.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 2, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 2, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 2.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 3, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 3.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 3, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 3, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 3.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 4, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 4.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 4, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 4, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 4.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 5, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9460.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 5.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 5, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 5, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 5.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 6, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 6.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 6, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 6, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 6.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 7, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 7.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 7, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 7, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(JOB_COMPLETED, {
+    'time': 'Fri Nov 11 23:58:34 2016', 'jobName': 'model-test'})
+# Save by Ali on 2016_11_12-00.00.24; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.optimizationProcesses['Opt-Process-1'].setValues()
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job'].setValues(
+    multiprocessingMode=THREADS, numCpus=7, numDomains=7)
+# Save by Ali on 2016_11_12-00.13.55; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.optimizationProcesses['Opt-Process-1']._Message(STARTED, {
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus/CAE Topology Optimization Module - version: Abaqus 6.13-1', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' The directory "Opt-Process-1" exists and will be deleted ', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Logfile: Opt-Process-1\\atom.out', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting jobname: "Opt-Process-1"', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus / ATOM pre-processor', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus analysis - design cycle 0', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': BATCHPRE_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'BUCKLE OPTION IS NOT SUPPORTED FOR ELEMENT LOOP PARALLELIZATION. IF YOU HAVE SPECIFIED ELEMENT LOOP PARALLELIZATION, IT WILL BE TURNED OFF FOR THIS ANALYSIS.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_S,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE _T0_Wheel_Centre_Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_SN,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER OP=NEW HAS BEEN MIXED WITH EITHER OP=ADD OR OP=REPLACE ON *OUTPUT REQUESTS.  OP=NEW IS ASSUMED FOR ALL *OUTPUT REQUESTS IN THIS STEP', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER OP=NEW HAS BEEN MIXED WITH EITHER OP=ADD OR OP=REPLACE ON *OUTPUT REQUESTS.  OP=NEW IS ASSUMED FOR ALL *OUTPUT REQUESTS IN THIS STEP', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1084 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 984 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\Opt-Process-1\\Opt-Process-1-Job.odb', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'AN OUTPUT DATABASE REQUEST THAT REQUIRES THE CALCULATOR HAS BEEN FOUND.  IF VIEWING THE RESULTS BEFORE THE ANALYSIS IS COMPLETE, PLEASE RUN THE CALCULATOR MANUALLY USING THE CONVERT=ODB AND OLDJOB= OPTIONS.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': STANDARD_PHASE, 'clientHost': 'Geoff', 'handle': 5636, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 0.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9495.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9495.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': CALCULATOR_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': CALCULATOR_PHASE, 'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    JOB_COMPLETED, {'time': 'Sat Nov 12 00:41:45 2016', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1']._archiveJob()
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus / ATOM optimization module - design cycle 0', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus analysis - design cycle 1', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': BATCHPRE_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_S,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE _T0_Wheel_Centre_Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_SN,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER OP=NEW HAS BEEN MIXED WITH EITHER OP=ADD OR OP=REPLACE ON *OUTPUT REQUESTS.  OP=NEW IS ASSUMED FOR ALL *OUTPUT REQUESTS IN THIS STEP', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1084 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 984 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\Opt-Process-1\\Opt-Process-1-Job.odb', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'AN OUTPUT DATABASE REQUEST THAT REQUIRES THE CALCULATOR HAS BEEN FOUND.  IF VIEWING THE RESULTS BEFORE THE ANALYSIS IS COMPLETE, PLEASE RUN THE CALCULATOR MANUALLY USING THE CONVERT=ODB AND OLDJOB= OPTIONS.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': STANDARD_PHASE, 'clientHost': 'Geoff', 'handle': 8648, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 0.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': CALCULATOR_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': CALCULATOR_PHASE, 'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    JOB_COMPLETED, {'time': 'Sat Nov 12 01:35:41 2016', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1']._archiveJob()
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus / ATOM optimization module - design cycle 1', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus analysis - design cycle 2', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': BATCHPRE_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_S,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE _T0_Wheel_Centre_Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_SN,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER OP=NEW HAS BEEN MIXED WITH EITHER OP=ADD OR OP=REPLACE ON *OUTPUT REQUESTS.  OP=NEW IS ASSUMED FOR ALL *OUTPUT REQUESTS IN THIS STEP', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1084 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 984 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\Opt-Process-1\\Opt-Process-1-Job.odb', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'AN OUTPUT DATABASE REQUEST THAT REQUIRES THE CALCULATOR HAS BEEN FOUND.  IF VIEWING THE RESULTS BEFORE THE ANALYSIS IS COMPLETE, PLEASE RUN THE CALCULATOR MANUALLY USING THE CONVERT=ODB AND OLDJOB= OPTIONS.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': STANDARD_PHASE, 'clientHost': 'Geoff', 'handle': 12280, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 0.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': CALCULATOR_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': CALCULATOR_PHASE, 'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    JOB_COMPLETED, {'time': 'Sat Nov 12 02:22:54 2016', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1']._archiveJob()
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus / ATOM optimization module - design cycle 2', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus analysis - design cycle 3', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': BATCHPRE_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_S,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE _T0_Wheel_Centre_Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_SN,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER OP=NEW HAS BEEN MIXED WITH EITHER OP=ADD OR OP=REPLACE ON *OUTPUT REQUESTS.  OP=NEW IS ASSUMED FOR ALL *OUTPUT REQUESTS IN THIS STEP', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1084 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 984 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\Opt-Process-1\\Opt-Process-1-Job.odb', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'AN OUTPUT DATABASE REQUEST THAT REQUIRES THE CALCULATOR HAS BEEN FOUND.  IF VIEWING THE RESULTS BEFORE THE ANALYSIS IS COMPLETE, PLEASE RUN THE CALCULATOR MANUALLY USING THE CONVERT=ODB AND OLDJOB= OPTIONS.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': STANDARD_PHASE, 'clientHost': 'Geoff', 'handle': 11168, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 0.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': CALCULATOR_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': CALCULATOR_PHASE, 'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    JOB_COMPLETED, {'time': 'Sat Nov 12 03:12:02 2016', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1']._archiveJob()
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus / ATOM optimization module - design cycle 3', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus analysis - design cycle 4', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': BATCHPRE_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_S,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE _T0_Wheel_Centre_Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_SN,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER OP=NEW HAS BEEN MIXED WITH EITHER OP=ADD OR OP=REPLACE ON *OUTPUT REQUESTS.  OP=NEW IS ASSUMED FOR ALL *OUTPUT REQUESTS IN THIS STEP', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1084 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 984 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\Opt-Process-1\\Opt-Process-1-Job.odb', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'AN OUTPUT DATABASE REQUEST THAT REQUIRES THE CALCULATOR HAS BEEN FOUND.  IF VIEWING THE RESULTS BEFORE THE ANALYSIS IS COMPLETE, PLEASE RUN THE CALCULATOR MANUALLY USING THE CONVERT=ODB AND OLDJOB= OPTIONS.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': STANDARD_PHASE, 'clientHost': 'Geoff', 'handle': 6200, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 0.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9495.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': CALCULATOR_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': CALCULATOR_PHASE, 'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    JOB_COMPLETED, {'time': 'Sat Nov 12 04:00:09 2016', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1']._archiveJob()
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus / ATOM optimization module - design cycle 4', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus analysis - design cycle 5', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': BATCHPRE_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_S,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE _T0_Wheel_Centre_Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_SN,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER OP=NEW HAS BEEN MIXED WITH EITHER OP=ADD OR OP=REPLACE ON *OUTPUT REQUESTS.  OP=NEW IS ASSUMED FOR ALL *OUTPUT REQUESTS IN THIS STEP', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1084 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 984 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\Opt-Process-1\\Opt-Process-1-Job.odb', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'AN OUTPUT DATABASE REQUEST THAT REQUIRES THE CALCULATOR HAS BEEN FOUND.  IF VIEWING THE RESULTS BEFORE THE ANALYSIS IS COMPLETE, PLEASE RUN THE CALCULATOR MANUALLY USING THE CONVERT=ODB AND OLDJOB= OPTIONS.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': STANDARD_PHASE, 'clientHost': 'Geoff', 'handle': 4004, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 0.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9495.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9495.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9495.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': CALCULATOR_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': CALCULATOR_PHASE, 'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    JOB_COMPLETED, {'time': 'Sat Nov 12 04:47:32 2016', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1']._archiveJob()
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus / ATOM optimization module - design cycle 5', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus analysis - design cycle 6', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': BATCHPRE_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_S,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE _T0_Wheel_Centre_Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_SN,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER OP=NEW HAS BEEN MIXED WITH EITHER OP=ADD OR OP=REPLACE ON *OUTPUT REQUESTS.  OP=NEW IS ASSUMED FOR ALL *OUTPUT REQUESTS IN THIS STEP', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1084 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 984 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\Opt-Process-1\\Opt-Process-1-Job.odb', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'AN OUTPUT DATABASE REQUEST THAT REQUIRES THE CALCULATOR HAS BEEN FOUND.  IF VIEWING THE RESULTS BEFORE THE ANALYSIS IS COMPLETE, PLEASE RUN THE CALCULATOR MANUALLY USING THE CONVERT=ODB AND OLDJOB= OPTIONS.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': STANDARD_PHASE, 'clientHost': 'Geoff', 'handle': 10000, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 0.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': CALCULATOR_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': CALCULATOR_PHASE, 'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    JOB_COMPLETED, {'time': 'Sat Nov 12 05:32:41 2016', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1']._archiveJob()
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus / ATOM optimization module - design cycle 6', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus analysis - design cycle 7', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': BATCHPRE_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_S,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE _T0_Wheel_Centre_Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_SN,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER OP=NEW HAS BEEN MIXED WITH EITHER OP=ADD OR OP=REPLACE ON *OUTPUT REQUESTS.  OP=NEW IS ASSUMED FOR ALL *OUTPUT REQUESTS IN THIS STEP', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1084 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 984 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\Opt-Process-1\\Opt-Process-1-Job.odb', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'AN OUTPUT DATABASE REQUEST THAT REQUIRES THE CALCULATOR HAS BEEN FOUND.  IF VIEWING THE RESULTS BEFORE THE ANALYSIS IS COMPLETE, PLEASE RUN THE CALCULATOR MANUALLY USING THE CONVERT=ODB AND OLDJOB= OPTIONS.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': STANDARD_PHASE, 'clientHost': 'Geoff', 'handle': 6664, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 0.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 1, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 1.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 2, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 2.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 3, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 3.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 4, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 4.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 5, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 5.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9494.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 6, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 6.0, 'attempts': 0, 'timeIncrement': 1.0, 
+    'increment': 0, 'stepTime': 0.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 'jobName': 'Opt-Process-1-Job', 
+    'memory': 9495.73221874237})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 'frame': 1, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STATUS, {'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 
+    'increment': 1, 'stepTime': 1.0, 'step': 7, 'jobName': 'Opt-Process-1-Job', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    END_STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': CALCULATOR_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': CALCULATOR_PHASE, 'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    JOB_COMPLETED, {'time': 'Sat Nov 12 06:19:43 2016', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1']._archiveJob()
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus / ATOM optimization module - design cycle 7', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(STATUS, {
+    'message': ' Starting Abaqus analysis - design cycle 8', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    STARTED, {'phase': BATCHPRE_PHASE, 'clientHost': 'Geoff', 'handle': 0, 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_S,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE _T0_Wheel_Centre_Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (_T0_Wheel_Centre_Blank-1_SN,_T0_Wheel_Centre_Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER OP=NEW HAS BEEN MIXED WITH EITHER OP=ADD OR OP=REPLACE ON *OUTPUT REQUESTS.  OP=NEW IS ASSUMED FOR ALL *OUTPUT REQUESTS IN THIS STEP', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1084 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 984 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\Opt-Process-1\\Opt-Process-1-Job.odb', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'AN OUTPUT DATABASE REQUEST THAT REQUIRES THE CALCULATOR HAS BEEN FOUND.  IF VIEWING THE RESULTS BEFORE THE ANALYSIS IS COMPLETE, PLEASE RUN THE CALCULATOR MANUALLY USING THE CONVERT=ODB AND OLDJOB= OPTIONS.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    COMPLETED, {'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    ERROR, {
+    'message': 'The executable pre.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1'].jobs['Opt-Process-1-Job']._Message(
+    JOB_ABORTED, {
+    'message': 'The executable pre.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Opt-Process-1-Job'})
+mdb.optimizationProcesses['Opt-Process-1']._archiveJob()
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': ' **** ERROR in Abaqus / ATOM - module "FE-solver : abaqus" **** ', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': '  The optimization system is searching for  ', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': '  check string "THE ANALYSIS HAS BEEN COMPLETED"   ', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': '  in the checkfile "Opt-Process-1-Job.msg"  ', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {'message': '    ', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': '  The checkfile "Opt-Process-1-Job.msg" could not be found ', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': ' Logfile: Opt-Process-1\\atom.out', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': ' **** ERROR in Abaqus / ATOM - module "FE-solver : abaqus" **** ', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': '  Error occured during optimization in "FE-solver : abaqus"', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': '  Module call: "C:/SIMULIA/Abaqus/6.13-1/code/bin/abq6131.exe" job=Opt-Process-1-Job analysis interactive message messaging_mechanism=DIRECT listener_name=Geoff listener_resource=10776 direct_port=54464 memory=90% cpus=7 mp_mode=THREADS  ', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': '  Return code: 1 ', 'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': '  Please check the corresponding ERROR log Files ', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': ' Logfile: Opt-Process-1\\atom.out', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ERROR, {
+    'message': 'Optimization process failed with an error.', 
+    'jobName': 'Opt-Process-1'})
+mdb.optimizationProcesses['Opt-Process-1']._Message(ABORTED, {
+    'jobName': 'Opt-Process-1'})
+# Save by Ali on 2016_11_12-13.51.58; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].boundaryConditions['hub-washers'].deactivate('neg-axial')
+mdb.models['Model-1'].BoundaryCondition(name='hub-washers-2', objectToCopy=
+    mdb.models['Model-1'].boundaryConditions['hub-washers'], toStepName=
+    'y-torque')
+# Save by Ali on 2016_11_13-15.24.43; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['model-test'].submit(consistencyChecking=OFF)
+mdb.jobs['model-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'Geoff', 'handle': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_Wheel Centre Blank-1_S,ASSEMBLY__T0_Wheel Centre Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_Wheel Centre Blank-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_Wheel Centre Blank-1_SN,ASSEMBLY__T0_Wheel Centre Blank-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '5466 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 100 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Windows\\Temp\\model-test.odb', 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'Geoff', 'handle': 2884, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9460.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 1.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 2, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 2.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 2, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 2, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 2.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 3, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 3.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 3, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 3, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 4, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 3.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 4, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 3, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 4.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 4, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 4, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 5, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 4.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 5, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 4, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 5.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 5, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 5, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 6, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 5.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 6, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 5, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 6.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 6, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 6, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 7, 
+    'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 
+    'frame': 0, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 6.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 7, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['model-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'model-test', 'memory': 9459.0258731842})
+mdb.jobs['model-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 6, 
+    'frame': 1, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(STATUS, {'totalTime': 7.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 7, 
+    'jobName': 'model-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['model-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 7, 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'model-test'})
+mdb.jobs['model-test']._Message(JOB_COMPLETED, {
+    'time': 'Sun Nov 13 15:48:22 2016', 'jobName': 'model-test'})
+mdb.models['Model-1'].boundaryConditions.changeKey(fromName='hub-interface', 
+    toName='hub-interface-2')
+mdb.models['Model-1'].BoundaryCondition(name='hub-interface', objectToCopy=
+    mdb.models['Model-1'].boundaryConditions['hub-interface-2'], toStepName=
+    'ACW-Torque')
+mdb.models['Model-1'].boundaryConditions['hub-interface'].deactivate(
+    'pos-axial')
+# Save by Ali on 2016_11_13-15.56.38; build 6.13-1 2013_05_16-03.28.56 126354
+# Save by Ali on 2016_11_13-16.01.01; build 6.13-1 2013_05_16-03.28.56 126354
