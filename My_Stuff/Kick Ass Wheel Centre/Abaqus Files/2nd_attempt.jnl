@@ -33,3 +33,716 @@ mdb.models['Model-1'].parts['Wheel Centre Blank2'].PartitionCellByExtrudeEdge(
     mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[105]), line=
     mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[4], sense=REVERSE)
 # Save by s1208454 on 2016_11_13-16.18.39; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Set(faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#f0 #0 #3c00 ]', ), ), name='hub-holes')
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Set(faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#0 #360000 ]', ), ), name='hub-washers')
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Set(faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#0 #8000 ]', ), ), name='hub-interface')
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Set(faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#0 #80000 ]', ), ), name='perimeter-interface')
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Set(faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#2000000 #1000000 ]', ), ), name='centre-hole')
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Set(faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#c0000000 #7fff #8000 ]', ), ), name='perimeter-washers')
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Set(faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#5ffff00 #fe800000 #3ff ]', ), ), name='perimeter-holes')
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Surface(name='hub-washers', 
+    side1Faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#0 #360000 ]', ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Surface(name='hub-holes', 
+    side1Faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#f0 #0 #3c00 ]', ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Surface(name='hub-interface'
+    , side1Faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#2000000 #1000000 ]', ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].surfaces.changeKey(fromName=
+    'hub-interface', toName='centre-hole')
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Surface(name='hub-interface'
+    , side1Faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#0 #8000 ]', ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Surface(name=
+    'perimeter-washers', side1Faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#c0000000 #7fff #8000 ]', ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Surface(name=
+    'perimeter-interface', side1Faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#0 #80000 ]', ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].Surface(name=
+    'perimeter-holes', side1Faces=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].faces.getSequenceFromMask(
+    ('[#5ffff00 #fe800000 #3ff ]', ), ))
+# Save by s1208454 on 2016_11_14-17.14.08; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].Material(name='aluminium')
+mdb.models['Model-1'].materials['aluminium'].Elastic(table=((70000000000.0, 
+    0.33), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='aluminium', name=
+    'solid-aluminium', thickness=None)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].SectionAssignment(offset=0.0
+    , offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['Wheel Centre Blank2'].cells.getSequenceFromMask(
+    mask=('[#7 ]', ), )), sectionName='solid-aluminium', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name=
+    'Wheel Centre Blank2-1', part=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'])
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].PartitionCellByPlaneThreePoints(
+    cells=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), point1=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].InterestingPoint(
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[0], CENTER), 
+    point2=mdb.models['Model-1'].parts['Wheel Centre Blank2'].InterestingPoint(
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[2], CENTER), 
+    point3=mdb.models['Model-1'].parts['Wheel Centre Blank2'].vertices[94])
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].setMeshControls(algorithm=
+    ADVANCING_FRONT, regions=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].cells.getSequenceFromMask(
+    ('[#3 ]', ), ), technique=SWEEP)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedPart(deviationFactor=0.1
+    , minSizeFactor=0.1, size=0.016)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedPart(deviationFactor=0.1
+    , minSizeFactor=0.1, size=0.005)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedPart(deviationFactor=
+    0.02, minSizeFactor=0.1, size=0.005)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges.getSequenceFromMask(
+    ('[#0:3 #a0000 ]', ), ), number=4)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].generateMesh()
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].cells.getSequenceFromMask(
+    ('[#b ]', ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges.getSequenceFromMask(
+    ('[#0:3 #a00 ]', ), ), number=10)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].generateMesh()
+# Save by s1208454 on 2016_11_14-17.23.19; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].cells.getSequenceFromMask(
+    ('[#f ]', ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges.getSequenceFromMask(
+    ('[#29400 ]', ), ), number=50)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges.getSequenceFromMask(
+    ('[#29400 ]', ), ), number=65)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].generateMesh()
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].cells.getSequenceFromMask(
+    ('[#f ]', ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges.getSequenceFromMask(
+    ('[#21400 ]', ), ), number=100)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges.getSequenceFromMask(
+    ('[#88 ]', ), ), number=20)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].generateMesh()
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].cells.getSequenceFromMask(
+    ('[#4 ]', ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges.getSequenceFromMask(
+    ('[#0:3 #10000 #0 #4000000 ]', ), ), number=90)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges.getSequenceFromMask(
+    ('[#0:3 #10000 #0 #4000000 ]', ), ), number=100)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].generateMesh()
+# Save by s1208454 on 2016_11_14-17.26.27; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.regenerate()
+# Save by s1208454 on 2016_11_14-17.26.47; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].Calibration(name='Calibration-1')
+del mdb.models['Model-1'].calibrations['Calibration-1']
+mdb.models['Model-1'].materials['aluminium'].Density(table=((2700.0, ), ))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].DatumPointByOffset(point=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].InterestingPoint(
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[10], CENTER), 
+    vector=(0.0, 0.0, -100.0))
+del mdb.models['Model-1'].parts['Wheel Centre Blank2'].features['Datum pt-1']
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].setValues(space=THREE_D, 
+    type=DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].DatumPointByOffset(point=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].InterestingPoint(
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[10], CENTER), 
+    vector=(0.0, 0.0, -0.1))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].DatumPointByOffset(point=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].datums[33], vector=(0.0, 
+    -0.27, 0.0))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].Coupling(controlPoint=Region(
+    vertices=mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].vertices.getSequenceFromMask(
+    mask=('[#0:3 #2 ]', ), )), couplingType=KINEMATIC, influenceRadius=
+    WHOLE_SURFACE, localCsys=None, name='Constraint-1', surface=Region(
+    side1Faces=mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].faces.getSequenceFromMask(
+    mask=('[#0 #4 ]', ), )), u1=ON, u2=ON, u3=ON, ur1=ON, ur2=ON, ur3=ON)
+del mdb.models['Model-1'].constraints['Constraint-1']
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].datums[33])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].datums[34])
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].DatumPointByOffset(point=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].datums[33], vector=(
+    0.27, 0.0, 0.0))
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].DatumPointByOffset(point=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].datums[33], vector=(
+    0.19092, -0.19092, 0.0))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].StaticStep(name='torque-0', previous='Initial')
+mdb.models['Model-1'].StaticStep(name='torque-45', previous='torque-0')
+mdb.models['Model-1'].StaticStep(name='torque-90', previous='torque-45')
+mdb.models['Model-1'].StaticStep(name='pos-axial-90', previous='torque-90')
+mdb.models['Model-1'].StaticStep(name='pos-axial-45', previous='pos-axial-90')
+mdb.models['Model-1'].StaticStep(name='pos-axial-0', previous='pos-axial-45')
+mdb.models['Model-1'].StaticStep(name='neg-axial-0', previous='pos-axial-0')
+mdb.models['Model-1'].StaticStep(name='neg-axial-45', previous='neg-axial-0')
+mdb.models['Model-1'].StaticStep(name='neg-axial-90', previous='neg-axial-45')
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].datums[36])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].datums[35])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.referencePoints[7])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.referencePoints[8])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.referencePoints[9])
+mdb.models['Model-1'].rootAssembly.deleteFeatures(('RP-7', 'RP-5', 'RP-6'))
+del mdb.models['Model-1'].rootAssembly.features['RP-1']
+mdb.models['Model-1'].rootAssembly.features.changeKey(fromName='RP-2', toName=
+    'RP-1')
+mdb.models['Model-1'].rootAssembly.features.changeKey(fromName='RP-3', toName=
+    'RP-2')
+mdb.models['Model-1'].rootAssembly.features.changeKey(fromName='RP-4', toName=
+    'RP-3')
+# Save by s1208454 on 2016_11_14-18.21.15; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].edges[13], 
+    CENTER))
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.referencePoints[13])
+del mdb.models['Model-1'].rootAssembly.features['RP-5']
+mdb.models['Model-1'].Coupling(controlPoint=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[13], )), couplingType=
+    KINEMATIC, influenceRadius=WHOLE_SURFACE, localCsys=None, name=
+    'RP-4-centre-hole', surface=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].surfaces['centre-hole']
+    , u1=ON, u2=ON, u3=ON, ur1=ON, ur2=ON, ur3=ON)
+mdb.models['Model-1'].Coupling(controlPoint=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[7], )), couplingType=
+    KINEMATIC, influenceRadius=WHOLE_SURFACE, localCsys=None, name=
+    'RP1-perimeter', surface=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].surfaces['perimeter-holes']
+    , u1=ON, u2=ON, u3=ON, ur1=ON, ur2=ON, ur3=ON)
+mdb.models['Model-1'].Coupling(controlPoint=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[8], )), couplingType=
+    KINEMATIC, influenceRadius=WHOLE_SURFACE, localCsys=None, name=
+    'RP2-perimeter', surface=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].surfaces['perimeter-holes']
+    , u1=ON, u2=ON, u3=ON, ur1=ON, ur2=ON, ur3=ON)
+mdb.models['Model-1'].Coupling(controlPoint=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[9], )), couplingType=
+    KINEMATIC, influenceRadius=WHOLE_SURFACE, localCsys=None, name=
+    'RP3-perimeter', surface=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].surfaces['perimeter-holes']
+    , u1=ON, u2=ON, u3=ON, ur1=ON, ur2=ON, ur3=ON)
+# Save by s1208454 on 2016_11_14-18.51.00; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='torque-0'
+    , distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'hub-holes', region=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].sets['hub-holes']
+    , u1=0.0, u2=0.0, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='torque-0'
+    , distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'hub-washers', region=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].sets['hub-washers']
+    , u1=UNSET, u2=UNSET, u3=0.0, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='torque-0'
+    , distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'hub-interface', region=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].sets['hub-interface']
+    , u1=UNSET, u2=UNSET, u3=0.0, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].ConcentratedForce(cf2=1500.0, createStepName='torque-0', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Force-0', region=
+    Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[7], )))
+mdb.models['Model-1'].loads['Force-0'].setValues(cf1=2165.0, distributionType=
+    UNIFORM, field='')
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].DatumCsysByThreePoints(
+    coordSysType=CYLINDRICAL, name='Cyl-coordinates', origin=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].InterestingPoint(
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[13], CENTER), 
+    point1=mdb.models['Model-1'].parts['Wheel Centre Blank2'].datums[35], 
+    point2=mdb.models['Model-1'].parts['Wheel Centre Blank2'].vertices[96])
+del mdb.models['Model-1'].parts['Wheel Centre Blank2'].features['Cyl-coordinates']
+mdb.models['Model-1'].parts['Wheel Centre Blank2'].DatumCsysByThreePoints(
+    coordSysType=CYLINDRICAL, name='cyl-coordinates', origin=(0.0, 0.0, 0.0), 
+    point1=mdb.models['Model-1'].parts['Wheel Centre Blank2'].InterestingPoint(
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'].edges[106], MIDDLE), 
+    point2=mdb.models['Model-1'].parts['Wheel Centre Blank2'].vertices[96])
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].ConcentratedForce(cf1=1.0, createStepName='torque-45', 
+    distributionType=UNIFORM, field='', localCsys=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].datums[38]
+    , name='Force-45', region=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[8], )))
+mdb.models['Model-1'].loads['Force-45'].setValues(cf1=-1500.0, cf2=2165.0, 
+    distributionType=UNIFORM, field='')
+del mdb.models['Model-1'].loads['Force-0']
+mdb.models['Model-1'].ConcentratedForce(cf1=-1500.0, cf2=2165.0, 
+    createStepName='torque-0', distributionType=UNIFORM, field='', localCsys=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].datums[38]
+    , name='Force-0', region=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[7], )))
+mdb.models['Model-1'].ConcentratedForce(cf1=-1500.0, cf2=2165.0, 
+    createStepName='torque-90', distributionType=UNIFORM, field='', localCsys=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].datums[38]
+    , name='Force-90', region=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[9], )))
+del mdb.models['Model-1'].steps['neg-axial-90']
+del mdb.models['Model-1'].steps['neg-axial-45']
+del mdb.models['Model-1'].steps['neg-axial-0']
+del mdb.models['Model-1'].steps['pos-axial-0']
+del mdb.models['Model-1'].steps['pos-axial-45']
+del mdb.models['Model-1'].steps['pos-axial-90']
+mdb.models['Model-1'].loads['Force-0'].setValuesInStep(cf1=0.0, cf2=0.0, 
+    stepName='torque-45')
+mdb.models['Model-1'].loads['Force-45'].setValuesInStep(cf1=0.0, cf2=0.0, 
+    stepName='torque-90')
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Model2-test', nodalOutputPrecision=
+    SINGLE, numCpus=4, numDomains=4, numGPUs=0, queue=None, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['Model2-test'].submit(consistencyChecking=OFF, datacheckJob=True)
+mdb.jobs['Model2-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'tlf37.see.ed.ac.uk', 'handle': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'SYSTEM ERROR IN PRE_NRCOUPLING - NO ENTRY FOR REFERENCE NODE 1 (ASSEMBLY).', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Model2-test'})
+mdb.models['Model-1'].rootAssembly.deleteFeatures(('Wheel Centre Blank2-1', 
+    'RP-4', 'RP-3', 'RP-2', 'RP-1'))
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name=
+    'Wheel Centre Blank2-1', part=
+    mdb.models['Model-1'].parts['Wheel Centre Blank2'])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].datums[34])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].datums[36])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].datums[35])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].edges[13], 
+    CENTER))
+mdb.models['Model-1'].constraints['RP1-perimeter'].setValues(controlPoint=
+    Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[25], )))
+mdb.models['Model-1'].constraints['RP2-perimeter'].setValues(controlPoint=
+    Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[26], )))
+mdb.models['Model-1'].constraints['RP3-perimeter'].setValues(controlPoint=
+    Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[27], )))
+mdb.models['Model-1'].constraints['RP-4-centre-hole'].setValues(controlPoint=
+    Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[28], )))
+mdb.models['Model-1'].loads['Force-0'].setValues(distributionType=UNIFORM, 
+    field='', region=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[25], )))
+mdb.models['Model-1'].loads['Force-45'].setValues(distributionType=UNIFORM, 
+    field='', region=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[26], )))
+mdb.models['Model-1'].loads['Force-90'].setValues(distributionType=UNIFORM, 
+    field='', region=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[27], )))
+mdb.jobs['Model2-test'].submit(consistencyChecking=OFF, datacheckJob=True)
+mdb.jobs['Model2-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'tlf37.see.ed.ac.uk', 'handle': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'SYSTEM ERROR IN PRE_NRCOUPLING - NO ENTRY FOR REFERENCE NODE 1 (ASSEMBLY).', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Model2-test'})
+mdb.models['Model-1'].constraints['RP2-perimeter'].suppress()
+mdb.models['Model-1'].constraints['RP3-perimeter'].suppress()
+mdb.models['Model-1'].loads['Force-45'].suppress()
+mdb.models['Model-1'].loads['Force-90'].suppress()
+mdb.models['Model-1'].steps['torque-45'].suppress()
+mdb.models['Model-1'].steps['torque-90'].suppress()
+mdb.jobs['Model2-test'].submit(consistencyChecking=OFF, datacheckJob=True)
+mdb.jobs['Model2-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'tlf37.see.ed.ac.uk', 'handle': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET30 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET31 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET34 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET35 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '36 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 46 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/s1208454/FEMSS4/My_Stuff/Kick Ass Wheel Centre/Abaqus Files/Model2-test.odb', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'tlf37.see.ed.ac.uk', 'handle': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Model2-test', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Model2-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Model2-test', 'memory': 1867.40954780579})
+mdb.jobs['Model2-test']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(JOB_COMPLETED, {
+    'time': 'Mon Nov 14 19:31:28 2016', 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test'].submit(consistencyChecking=OFF)
+mdb.jobs['Model2-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'tlf37.see.ed.ac.uk', 'handle': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET30 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET31 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET34 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET35 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '36 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 46 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/s1208454/FEMSS4/My_Stuff/Kick Ass Wheel Centre/Abaqus Files/Model2-test.odb', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'tlf37.see.ed.ac.uk', 'handle': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Model2-test', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Model2-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Model2-test', 'memory': 2187.29780101776})
+mdb.jobs['Model2-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Model2-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Model2-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(JOB_COMPLETED, {
+    'time': 'Mon Nov 14 19:32:37 2016', 'jobName': 'Model2-test'})
+# Save by s1208454 on 2016_11_14-19.35.14; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Model2-test'].submit(consistencyChecking=OFF)
+mdb.jobs['Model2-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'vlx06.see.ed.ac.uk', 'handle': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET30 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET31 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET34 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY__PICKEDSET35 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '36 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 46 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/s1208454/Model2-test.odb', 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'vlx06.see.ed.ac.uk', 'handle': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Model2-test', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Model2-test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Model2-test', 'memory': 2187.29780101776})
+mdb.jobs['Model2-test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Model2-test', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Model2-test']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Model2-test'})
+mdb.jobs['Model2-test']._Message(JOB_COMPLETED, {
+    'time': 'Mon Nov 14 19:38:35 2016', 'jobName': 'Model2-test'})
+mdb.models['Model-1'].TopologyTask(freezeBoundaryConditionRegions=ON, name=
+    'Min-vol-maintain-strain', region=MODEL)
+mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].SingleTermDesignResponse(
+    drivingRegion=None, identifier='VOLUME', name='vol', operation=SUM, region=
+    MODEL, stepOptions=())
+mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].SingleTermDesignResponse(
+    drivingRegion=None, identifier='STRAIN_ENERGY', name='strain-energy', 
+    operation=SUM, region=MODEL, stepOptions=())
+mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].ObjectiveFunction(
+    name='min-vol', objectives=((OFF, 'vol', 1.0, 0.0, ''), ))
+mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].OptimizationConstraint(
+    designResponse='strain-energy', name='maintain-strain', restrictionMethod=
+    RELATIVE_LESS_THAN_EQUAL, restrictionValue=1.0)
+mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].TopologyPlanarSymmetry(
+    axis=AXIS_1, csys=None, ignoreFrozenArea=False, name='x-sym', region=MODEL)
+mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].FrozenArea(
+    name='y-sym', region=Region(
+    cells=mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].cells.getSequenceFromMask(
+    mask=('[#f ]', ), )))
+del mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].geometricRestrictions['y-sym']
+mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].GeometricRestriction(
+    name='y-sym', objectToCopy=
+    mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].geometricRestrictions['x-sym'])
+mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].geometricRestrictions['y-sym'].setValues(
+    axis=AXIS_2)
+mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].TopologyDemoldControl(
+    collisionCheckRegion=DEMOLD_REGION, csys=None, draftAngle=0.0, name=
+    'demold', pointRegion=None, pullDirection=((0.0, 0.0, 0.0), (0.0, 0.0, 
+    -1.0)), region=MODEL, technique=AUTO)
+mdb.models['Model-1'].optimizationTasks['Min-vol-maintain-strain'].FrozenArea(
+    name='frozen', region=Region(
+    cells=mdb.models['Model-1'].rootAssembly.instances['Wheel Centre Blank2-1'].cells.getSequenceFromMask(
+    mask=('[#4 ]', ), )))
+# Save by s1208454 on 2016_11_14-19.44.17; build 6.12-1 2012_03_13-20.21.46 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.OptimizationProcess(dataSaveFrequency=OPT_DATASAVE_EVERY_CYCLE, 
+    description='', maxDesignCycle=50, model='Model-1', name=
+    'min-vol-maintain-strain', odbMergeFrequency=2, prototypeJob=
+    'min-vol-maintain-strain-Job', task='Min-vol-maintain-strain')
+mdb.optimizationProcesses['min-vol-maintain-strain'].Job(atTime=None, 
+    getMemoryFromAnalysis=True, memory=90, memoryUnits=PERCENTAGE, model=
+    'Model-1', multiprocessingMode=DEFAULT, name='min-vol-maintain-strain-Job', 
+    numCpus=8, numDomains=8, numGPUs=0, queue=None, waitHours=0, waitMinutes=0)
+mdb.optimizationProcesses['min-vol-maintain-strain']._Message(STARTED, {
+    'jobName': 'min-vol-maintain-strain'})
+mdb.optimizationProcesses['min-vol-maintain-strain']._Message(ERROR, {
+    'message': '  Optimization parameterfile given by --opt <parameter-file> does not exist. ', 
+    'jobName': 'min-vol-maintain-strain'})
+mdb.optimizationProcesses['min-vol-maintain-strain']._Message(ERROR, {
+    'message': '  Check that parameterfile "min-vol-maintain-strain.par" exist ! ', 
+    'jobName': 'min-vol-maintain-strain'})
+mdb.optimizationProcesses['min-vol-maintain-strain']._Message(ERROR, {
+    'message': 'Optimization process failed with an error.', 
+    'jobName': 'min-vol-maintain-strain'})
+mdb.optimizationProcesses['min-vol-maintain-strain']._Message(ABORTED, {
+    'jobName': 'min-vol-maintain-strain'})
+# Save by s1208454 on 2016_11_14-19.48.39; build 6.12-1 2012_03_13-20.21.46 119612
