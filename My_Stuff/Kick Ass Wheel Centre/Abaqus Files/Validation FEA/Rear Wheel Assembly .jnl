@@ -1,0 +1,2030 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openStep(
+    'C:/Users/Ali/Documents/GrabCAD/2016-2017/Suspension/Rear Suspension/Rear Wheel FEA Assembly.STEP'
+    , scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=False, dimensionality=
+    THREE_D, geometryFile=mdb.acis, name='Rear Wheel FEA Assembly-1', type=
+    DEFORMABLE_BODY, usePartNameFromFile=True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=2, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-2', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=3, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-3', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=4, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-4', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=5, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-5', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=6, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-6', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=7, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-7', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=8, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-8', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=9, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-9', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=10, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-10', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=11, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-11', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=12, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-12', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=13, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-13', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=14, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-14', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=15, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-15', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=16, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-16', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=17, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name=
+    'Rear Wheel FEA Assembly-17', type=DEFORMABLE_BODY, usePartNameFromFile=
+    True)
+mdb.models['Model-1'].parts.changeKey(fromName='Boss-Extrude1', toName='brake')
+mdb.models['Model-1'].parts.changeKey(fromName='Boss-Extrude1-1', toName=
+    'washer1')
+mdb.models['Model-1'].parts.changeKey(fromName='Boss-Extrude1-2', toName=
+    'washer2')
+mdb.models['Model-1'].parts.changeKey(fromName='Boss-Extrude1-3', toName=
+    'washer3')
+mdb.models['Model-1'].parts.changeKey(fromName='Boss-Extrude1-4', toName=
+    'washer4')
+mdb.models['Model-1'].parts.changeKey(fromName='CirPattern4', toName=
+    'wheel-centre')
+mdb.models['Model-1'].parts.changeKey(fromName='Cut-Extrude2', toName='hub')
+mdb.models['Model-1'].parts.changeKey(fromName='Cut-Revolve1', toName='nut1')
+mdb.models['Model-1'].parts.changeKey(fromName='Cut-Revolve1-1', toName='nut2')
+mdb.models['Model-1'].parts.changeKey(fromName='Cut-Revolve1-2', toName='nut3')
+mdb.models['Model-1'].parts.changeKey(fromName='Cut-Revolve1-3', toName='nut4')
+mdb.models['Model-1'].parts.changeKey(fromName='M10 Clearance Hole1', toName=
+    'spacer1')
+mdb.models['Model-1'].parts.changeKey(fromName='M10 Clearance Hole1-1', toName=
+    'spacer2')
+mdb.models['Model-1'].parts.changeKey(fromName='Revolve1', toName='bolt1')
+mdb.models['Model-1'].parts.changeKey(fromName='Revolve1-1', toName='bolt2')
+mdb.models['Model-1'].parts.changeKey(fromName='Revolve1-2', toName='bolt3')
+mdb.models['Model-1'].parts.changeKey(fromName='Revolve1-3', toName='bolt4')
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='bolt1-1', part=
+    mdb.models['Model-1'].parts['bolt1'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='bolt2-1', part=
+    mdb.models['Model-1'].parts['bolt2'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='bolt3-1', part=
+    mdb.models['Model-1'].parts['bolt3'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='bolt4-1', part=
+    mdb.models['Model-1'].parts['bolt4'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='brake-1', part=
+    mdb.models['Model-1'].parts['brake'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='hub-1', part=
+    mdb.models['Model-1'].parts['hub'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='nut1-1', part=
+    mdb.models['Model-1'].parts['nut1'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='nut2-1', part=
+    mdb.models['Model-1'].parts['nut2'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='nut3-1', part=
+    mdb.models['Model-1'].parts['nut3'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='nut4-1', part=
+    mdb.models['Model-1'].parts['nut4'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='spacer1-1', 
+    part=mdb.models['Model-1'].parts['spacer1'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='spacer2-1', 
+    part=mdb.models['Model-1'].parts['spacer2'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='washer1-1', 
+    part=mdb.models['Model-1'].parts['washer1'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='washer2-1', 
+    part=mdb.models['Model-1'].parts['washer2'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='washer3-1', 
+    part=mdb.models['Model-1'].parts['washer3'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='washer4-1', 
+    part=mdb.models['Model-1'].parts['washer4'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='wheel-centre-1'
+    , part=mdb.models['Model-1'].parts['wheel-centre'])
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=1.2, name='__profile__', 
+    sheetSize=48.08, transform=
+    mdb.models['Model-1'].parts['bolt1'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['bolt1'].faces[4], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['bolt1'].edges[3], 
+    sketchOrientation=RIGHT, origin=(0.0, 55.0, -74.163265)))
+mdb.models['Model-1'].parts['bolt1'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=1.2, name='__profile__', 
+    sheetSize=48.08, transform=
+    mdb.models['Model-1'].parts['bolt1'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['bolt1'].faces[4], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['bolt1'].edges[3], 
+    sketchOrientation=RIGHT, origin=(0.0, 55.0, -74.163265)))
+mdb.models['Model-1'].parts['bolt1'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 8.5), point2=(
+    0.0, -8.5))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[3], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(-8.5, 0.0), point2=(
+    8.5, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[4], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].parts['bolt1'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['bolt1'].faces.getSequenceFromMask(('[#10 ]', 
+    ), ), sketch=mdb.models['Model-1'].sketches['__profile__'], sketchUpEdge=
+    mdb.models['Model-1'].parts['bolt1'].edges[3])
+del mdb.models['Model-1'].sketches['__profile__']
+del mdb.models['Model-1'].parts['bolt1'].features['Partition face-1']
+mdb.models['Model-1'].parts['bolt1'].PartitionCellByPlaneThreePoints(cells=
+    mdb.models['Model-1'].parts['bolt1'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), point1=mdb.models['Model-1'].parts['bolt1'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt1'].edges[2], MIDDLE), point2=
+    mdb.models['Model-1'].parts['bolt1'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt1'].edges[3], MIDDLE), point3=
+    mdb.models['Model-1'].parts['bolt1'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt1'].edges[3], CENTER))
+del mdb.models['Model-1'].parts['bolt1'].features['Partition cell-1']
+mdb.models['Model-1'].parts['bolt1'].DatumAxisByTwoPoint(point1=
+    mdb.models['Model-1'].parts['bolt1'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt1'].edges[0], CENTER), point2=
+    mdb.models['Model-1'].parts['bolt1'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt1'].edges[3], CENTER))
+mdb.models['Model-1'].parts['bolt1'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['bolt1'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), normal=mdb.models['Model-1'].parts['bolt1'].datums[4], point=
+    mdb.models['Model-1'].parts['bolt1'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt1'].edges[2], MIDDLE))
+mdb.models['Model-1'].parts['bolt1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=2.4)
+mdb.models['Model-1'].parts['bolt1'].seedPart(deviationFactor=0.02, 
+    minSizeFactor=0.1, size=2.4)
+mdb.models['Model-1'].parts['bolt1'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['bolt1'].edges.getSequenceFromMask(('[#f ]', ), 
+    ), number=36)
+mdb.models['Model-1'].parts['bolt1'].generateMesh()
+mdb.models['Model-1'].parts['bolt2'].DatumAxisByTwoPoint(point1=
+    mdb.models['Model-1'].parts['bolt2'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt2'].edges[0], CENTER), point2=
+    mdb.models['Model-1'].parts['bolt2'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt2'].edges[3], CENTER))
+mdb.models['Model-1'].parts['bolt2'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['bolt2'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), normal=mdb.models['Model-1'].parts['bolt2'].datums[2], point=
+    mdb.models['Model-1'].parts['bolt2'].vertices[1])
+mdb.models['Model-1'].parts['bolt3'].DatumAxisByTwoPoint(point1=
+    mdb.models['Model-1'].parts['bolt3'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt3'].edges[0], CENTER), point2=
+    mdb.models['Model-1'].parts['bolt3'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt3'].edges[3], CENTER))
+mdb.models['Model-1'].parts['bolt3'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['bolt3'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), normal=mdb.models['Model-1'].parts['bolt3'].datums[2], point=
+    mdb.models['Model-1'].parts['bolt3'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt3'].edges[2], MIDDLE))
+mdb.models['Model-1'].parts['bolt4'].DatumAxisByTwoPoint(point1=
+    mdb.models['Model-1'].parts['bolt4'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt4'].edges[0], CENTER), point2=
+    mdb.models['Model-1'].parts['bolt4'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt4'].edges[3], CENTER))
+mdb.models['Model-1'].parts['bolt4'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['bolt4'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), normal=mdb.models['Model-1'].parts['bolt4'].datums[2], point=
+    mdb.models['Model-1'].parts['bolt4'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt4'].edges[2], MIDDLE))
+mdb.models['Model-1'].parts['bolt4'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=2.4)
+mdb.models['Model-1'].parts['bolt4'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['bolt4'].edges.getSequenceFromMask(('[#f ]', ), 
+    ), number=36)
+mdb.models['Model-1'].parts['bolt4'].generateMesh()
+mdb.models['Model-1'].parts['brake'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=17.0)
+mdb.models['Model-1'].parts['brake'].generateMesh()
+mdb.models['Model-1'].parts['brake'].deleteMesh()
+mdb.models['Model-1'].parts['brake'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=5.0)
+mdb.models['Model-1'].parts['brake'].generateMesh()
+mdb.models['Model-1'].parts['hub'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['hub'].cells.getSequenceFromMask(('[#1 ]', ), )
+    , edges=(mdb.models['Model-1'].parts['hub'].edges[49], ), line=
+    mdb.models['Model-1'].parts['hub'].edges[32], sense=REVERSE)
+mdb.models['Model-1'].parts['hub'].setMeshControls(elemShape=TET, regions=
+    mdb.models['Model-1'].parts['hub'].cells.getSequenceFromMask(('[#3 ]', ), )
+    , technique=FREE)
+mdb.models['Model-1'].parts['hub'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['hub'].cells.getSequenceFromMask((
+    '[#3 ]', ), ), ))
+mdb.models['Model-1'].parts['hub'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=5.0)
+mdb.models['Model-1'].parts['hub'].generateMesh()
+mdb.models['Model-1'].parts['nut1'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['nut1'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), edges=(mdb.models['Model-1'].parts['nut1'].edges[2], ), line=
+    mdb.models['Model-1'].parts['nut1'].edges[9], sense=FORWARD)
+mdb.models['Model-1'].parts['nut1'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.3)
+mdb.models['Model-1'].parts['nut1'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['nut1'].generateMesh()
+mdb.models['Model-1'].parts['nut1'].setMeshControls(elemShape=TET, regions=
+    mdb.models['Model-1'].parts['nut1'].cells.getSequenceFromMask(('[#2 ]', ), 
+    ), technique=FREE)
+mdb.models['Model-1'].parts['nut1'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['nut1'].cells.getSequenceFromMask((
+    '[#2 ]', ), ), ))
+mdb.models['Model-1'].parts['nut1'].generateMesh()
+mdb.models['Model-1'].parts['nut2'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['nut2'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), edges=(mdb.models['Model-1'].parts['nut2'].edges[2], ), line=
+    mdb.models['Model-1'].parts['nut2'].edges[12], sense=FORWARD)
+mdb.models['Model-1'].parts['nut2'].setMeshControls(elemShape=TET, regions=
+    mdb.models['Model-1'].parts['nut2'].cells.getSequenceFromMask(('[#2 ]', ), 
+    ), technique=FREE)
+mdb.models['Model-1'].parts['nut2'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['nut2'].cells.getSequenceFromMask((
+    '[#2 ]', ), ), ))
+mdb.models['Model-1'].parts['nut2'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['nut2'].generateMesh()
+mdb.models['Model-1'].parts['nut3'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['nut3'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), edges=(mdb.models['Model-1'].parts['nut3'].edges[2], ), line=
+    mdb.models['Model-1'].parts['nut3'].edges[18], sense=FORWARD)
+mdb.models['Model-1'].parts['nut3'].setMeshControls(elemShape=TET, regions=
+    mdb.models['Model-1'].parts['nut3'].cells.getSequenceFromMask(('[#2 ]', ), 
+    ), technique=FREE)
+mdb.models['Model-1'].parts['nut3'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['nut3'].cells.getSequenceFromMask((
+    '[#2 ]', ), ), ))
+mdb.models['Model-1'].parts['nut3'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['nut3'].generateMesh()
+mdb.models['Model-1'].parts['nut4'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['nut4'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), edges=(mdb.models['Model-1'].parts['nut4'].edges[2], ), line=
+    mdb.models['Model-1'].parts['nut4'].edges[6], sense=FORWARD)
+mdb.models['Model-1'].parts['nut4'].setMeshControls(elemShape=TET, regions=
+    mdb.models['Model-1'].parts['nut4'].cells.getSequenceFromMask(('[#2 ]', ), 
+    ), technique=FREE)
+mdb.models['Model-1'].parts['nut4'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['nut4'].cells.getSequenceFromMask((
+    '[#2 ]', ), ), ))
+mdb.models['Model-1'].parts['nut4'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['nut4'].generateMesh()
+mdb.models['Model-1'].parts['spacer1'].DatumAxisByTwoPoint(point1=
+    mdb.models['Model-1'].parts['spacer1'].InterestingPoint(
+    mdb.models['Model-1'].parts['spacer1'].edges[1], CENTER), point2=
+    mdb.models['Model-1'].parts['spacer1'].InterestingPoint(
+    mdb.models['Model-1'].parts['spacer1'].edges[0], CENTER))
+mdb.models['Model-1'].parts['spacer1'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['spacer1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['spacer1'].edges[2], ), line=
+    mdb.models['Model-1'].parts['spacer1'].datums[2], sense=FORWARD)
+del mdb.models['Model-1'].parts['spacer1'].features['Partition cell-1']
+mdb.models['Model-1'].parts['spacer1'].PartitionCellByPlaneThreePoints(cells=
+    mdb.models['Model-1'].parts['spacer1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), point1=mdb.models['Model-1'].parts['spacer1'].vertices[3], point2=
+    mdb.models['Model-1'].parts['spacer1'].vertices[6], point3=
+    mdb.models['Model-1'].parts['spacer1'].vertices[7])
+mdb.models['Model-1'].parts['spacer1'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=5.0)
+mdb.models['Model-1'].parts['spacer1'].generateMesh()
+mdb.models['Model-1'].parts['spacer1'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['spacer1'].cells.getSequenceFromMask(('[#3 ]', 
+    ), ))
+mdb.models['Model-1'].parts['spacer1'].seedEdgeByNumber(constraint=FINER, 
+    edges=mdb.models['Model-1'].parts['spacer1'].edges.getSequenceFromMask((
+    '[#43e ]', ), ), number=36)
+mdb.models['Model-1'].parts['spacer1'].deleteSeeds(regions=
+    mdb.models['Model-1'].parts['spacer1'].edges.getSequenceFromMask((
+    '[#420 ]', ), ))
+mdb.models['Model-1'].parts['spacer1'].generateMesh()
+mdb.models['Model-1'].parts['spacer1'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['spacer1'].cells.getSequenceFromMask(('[#3 ]', 
+    ), ))
+mdb.models['Model-1'].parts['spacer1'].deleteSeeds(regions=
+    mdb.models['Model-1'].parts['spacer1'].edges.getSequenceFromMask((
+    '[#7fff ]', ), ))
+mdb.models['Model-1'].parts['spacer1'].generateMesh()
+mdb.models['Model-1'].parts['spacer2'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=5.0)
+mdb.models['Model-1'].parts['spacer2'].generateMesh()
+mdb.models['Model-1'].parts['washer1'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.8)
+mdb.models['Model-1'].parts['washer1'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=1.0)
+mdb.models['Model-1'].parts['washer1'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['washer1'].generateMesh()
+mdb.models['Model-1'].parts['washer2'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['washer2'].generateMesh()
+mdb.models['Model-1'].parts['washer3'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['washer3'].generateMesh()
+mdb.models['Model-1'].parts['washer4'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['washer4'].generateMesh()
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=20.09, name='__profile__', 
+    sheetSize=803.89, transform=
+    mdb.models['Model-1'].parts['wheel-centre'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['wheel-centre'].faces[17], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['wheel-centre'].edges[291], 
+    sketchOrientation=RIGHT, origin=(0.0, 0.0, 0.0)))
+mdb.models['Model-1'].parts['wheel-centre'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 55.0), point1=(-2.10444960815729, 44.9507651975662))
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    -55.0, 0.0), point1=(-44.9507651975662, 2.10444960815732))
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    55.0, 0.0), point1=(44.9507651975662, 2.10444960815748))
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, -55.0), point1=(2.10444960815729, -44.9507651975662))
+mdb.models['Model-1'].parts['wheel-centre'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['wheel-centre'].faces.getSequenceFromMask((
+    '[#20000 ]', ), ), sketch=mdb.models['Model-1'].sketches['__profile__'], 
+    sketchUpEdge=mdb.models['Model-1'].parts['wheel-centre'].edges[291])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['wheel-centre'].DatumAxisByTwoPoint(point1=
+    mdb.models['Model-1'].parts['wheel-centre'].InterestingPoint(
+    mdb.models['Model-1'].parts['wheel-centre'].edges[319], CENTER), point2=
+    mdb.models['Model-1'].parts['wheel-centre'].InterestingPoint(
+    mdb.models['Model-1'].parts['wheel-centre'].edges[1], CENTER))
+mdb.models['Model-1'].parts['wheel-centre'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['wheel-centre'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), edges=(mdb.models['Model-1'].parts['wheel-centre'].edges[4], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[5]), line=
+    mdb.models['Model-1'].parts['wheel-centre'].datums[3], sense=REVERSE)
+mdb.models['Model-1'].parts['wheel-centre'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['wheel-centre'].cells.getSequenceFromMask((
+    '[#2 ]', ), ), edges=(
+    mdb.models['Model-1'].parts['wheel-centre'].edges[18], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[19]), line=
+    mdb.models['Model-1'].parts['wheel-centre'].datums[3], sense=REVERSE)
+mdb.models['Model-1'].parts['wheel-centre'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['wheel-centre'].cells.getSequenceFromMask((
+    '[#4 ]', ), ), edges=(
+    mdb.models['Model-1'].parts['wheel-centre'].edges[14], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[38]), line=
+    mdb.models['Model-1'].parts['wheel-centre'].datums[3], sense=REVERSE)
+mdb.models['Model-1'].parts['wheel-centre'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['wheel-centre'].cells.getSequenceFromMask((
+    '[#8 ]', ), ), edges=(
+    mdb.models['Model-1'].parts['wheel-centre'].edges[15], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[38]), line=
+    mdb.models['Model-1'].parts['wheel-centre'].datums[3], sense=REVERSE)
+mdb.models['Model-1'].parts['wheel-centre'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['wheel-centre'].cells.getSequenceFromMask((
+    '[#10 ]', ), ), edges=(
+    mdb.models['Model-1'].parts['wheel-centre'].edges[222], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[230], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[240], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[248], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[254], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[262], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[272], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[280], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[286], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[296], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[304], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[312], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[318], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[328], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[336], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[344], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[350], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[376], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[377], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[378], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[379], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[380], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[381], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[382], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[383], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[384], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[385], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[386], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[387], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[388], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[389], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[390], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[391], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[392], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[393], 
+    mdb.models['Model-1'].parts['wheel-centre'].edges[394]), line=
+    mdb.models['Model-1'].parts['wheel-centre'].datums[3], sense=FORWARD)
+mdb.models['Model-1'].parts['wheel-centre'].setMeshControls(elemShape=TET, 
+    regions=
+    mdb.models['Model-1'].parts['wheel-centre'].cells.getSequenceFromMask((
+    '[#20 ]', ), ), technique=FREE)
+mdb.models['Model-1'].parts['wheel-centre'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(
+    mdb.models['Model-1'].parts['wheel-centre'].cells.getSequenceFromMask((
+    '[#20 ]', ), ), ))
+mdb.models['Model-1'].parts['wheel-centre'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=5.0)
+mdb.models['Model-1'].parts['wheel-centre'].generateMesh()
+mdb.models['Model-1'].parts['wheel-centre'].generateMesh(boundaryPreview=ON)
+mdb.models['Model-1'].parts['wheel-centre'].deleteMesh()
+mdb.models['Model-1'].parts['wheel-centre'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.5)
+mdb.models['Model-1'].parts['wheel-centre'].generateMesh(boundaryPreview=ON)
+mdb.models['Model-1'].parts['wheel-centre'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+# Save by Ali on 2017_01_22-01.37.14; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].StaticStep(name='Step-1', previous='Initial')
+mdb.models['Model-1'].steps.changeKey(fromName='Step-1', toName='Preload')
+mdb.models['Model-1'].StaticStep(name='Wheel-load', previous='Preload')
+mdb.models['Model-1'].ContactProperty('Gen-contact')
+mdb.models['Model-1'].interactionProperties['Gen-contact'].TangentialBehavior(
+    dependencies=0, directionality=ISOTROPIC, elasticSlipStiffness=None, 
+    formulation=PENALTY, fraction=0.005, maximumElasticSlip=FRACTION, 
+    pressureDependency=OFF, shearStressLimit=None, slipRateDependency=OFF, 
+    table=((0.1, ), ), temperatureDependency=OFF)
+mdb.models['Model-1'].ContactStd(createStepName='Initial', name='Int-1')
+mdb.models['Model-1'].interactions['Int-1'].includedPairs.setValuesInStep(
+    stepName='Initial', useAllstar=ON)
+mdb.models['Model-1'].interactions['Int-1'].contactPropertyAssignments.appendInStep(
+    assignments=((GLOBAL, SELF, 'Gen-contact'), ), stepName='Initial')
+mdb.models['Model-1'].rootAssembly.Surface(name='CP-4-bolt1-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['bolt1-1'].faces.getSequenceFromMask(
+    ('[#4 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='CP-4-nut1-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['nut1-1'].faces.getSequenceFromMask(
+    ('[#200 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='CP-8-bolt2-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['bolt2-1'].faces.getSequenceFromMask(
+    ('[#4 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='CP-8-nut2-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['nut2-1'].faces.getSequenceFromMask(
+    ('[#200 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='CP-12-bolt3-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['bolt3-1'].faces.getSequenceFromMask(
+    ('[#4 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='CP-12-nut3-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['nut3-1'].faces.getSequenceFromMask(
+    ('[#200 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='CP-16-bolt4-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['bolt4-1'].faces.getSequenceFromMask(
+    ('[#4 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='CP-16-nut4-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['nut4-1'].faces.getSequenceFromMask(
+    ('[#200 ]', ), ))
+mdb.models['Model-1'].Tie(adjust=ON, constraintEnforcement=SURFACE_TO_SURFACE, 
+    master=mdb.models['Model-1'].rootAssembly.surfaces['CP-4-bolt1-1'], name=
+    'CP-4-bolt1-1-nut1-1', positionToleranceMethod=COMPUTED, slave=
+    mdb.models['Model-1'].rootAssembly.surfaces['CP-4-nut1-1'])
+mdb.models['Model-1'].Tie(adjust=ON, constraintEnforcement=SURFACE_TO_SURFACE, 
+    master=mdb.models['Model-1'].rootAssembly.surfaces['CP-8-bolt2-1'], name=
+    'CP-8-bolt2-1-nut2-1', positionToleranceMethod=COMPUTED, slave=
+    mdb.models['Model-1'].rootAssembly.surfaces['CP-8-nut2-1'])
+mdb.models['Model-1'].Tie(adjust=ON, constraintEnforcement=SURFACE_TO_SURFACE, 
+    master=mdb.models['Model-1'].rootAssembly.surfaces['CP-12-bolt3-1'], name=
+    'CP-12-bolt3-1-nut3-1', positionToleranceMethod=COMPUTED, slave=
+    mdb.models['Model-1'].rootAssembly.surfaces['CP-12-nut3-1'])
+mdb.models['Model-1'].Tie(adjust=ON, constraintEnforcement=SURFACE_TO_SURFACE, 
+    master=mdb.models['Model-1'].rootAssembly.surfaces['CP-16-bolt4-1'], name=
+    'CP-16-bolt4-1-nut4-1', positionToleranceMethod=COMPUTED, slave=
+    mdb.models['Model-1'].rootAssembly.surfaces['CP-16-nut4-1'])
+mdb.models['Model-1'].constraints['CP-4-bolt1-1-nut1-1'].setValues(
+    positionTolerance=1.0, positionToleranceMethod=SPECIFIED)
+mdb.models['Model-1'].constraints['CP-4-bolt1-1-nut1-1'].setValues(
+    positionToleranceMethod=COMPUTED)
+mdb.models['Model-1'].parts['bolt1'].DatumPlaneByPrincipalPlane(offset=40.0, 
+    principalPlane=XYPLANE)
+del mdb.models['Model-1'].parts['bolt1'].features['Datum plane-1']
+mdb.models['Model-1'].parts['bolt1'].DatumPlaneByTwoPoint(point1=
+    mdb.models['Model-1'].parts['bolt1'].vertices[1], point2=
+    mdb.models['Model-1'].parts['bolt1'].vertices[0])
+mdb.models['Model-1'].parts['bolt1'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['bolt1'].cells.getSequenceFromMask(('[#3 ]', ), 
+    ))
+mdb.models['Model-1'].parts['bolt1'].PartitionCellByDatumPlane(cells=
+    mdb.models['Model-1'].parts['bolt1'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), datumPlane=mdb.models['Model-1'].parts['bolt1'].datums[10])
+mdb.models['Model-1'].parts['bolt2'].DatumPlaneByTwoPoint(point1=
+    mdb.models['Model-1'].parts['bolt2'].vertices[1], point2=
+    mdb.models['Model-1'].parts['bolt2'].vertices[0])
+mdb.models['Model-1'].parts['bolt2'].PartitionCellByDatumPlane(cells=
+    mdb.models['Model-1'].parts['bolt2'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), datumPlane=mdb.models['Model-1'].parts['bolt2'].datums[4])
+mdb.models['Model-1'].parts['bolt3'].DatumPlaneByTwoPoint(point1=
+    mdb.models['Model-1'].parts['bolt3'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt3'].edges[1], MIDDLE), point2=
+    mdb.models['Model-1'].parts['bolt3'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt3'].edges[0], MIDDLE))
+mdb.models['Model-1'].parts['bolt3'].PartitionCellByDatumPlane(cells=
+    mdb.models['Model-1'].parts['bolt3'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), datumPlane=mdb.models['Model-1'].parts['bolt3'].datums[4])
+mdb.models['Model-1'].parts['bolt4'].DatumPlaneByTwoPoint(point1=
+    mdb.models['Model-1'].parts['bolt4'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt4'].edges[1], MIDDLE), point2=
+    mdb.models['Model-1'].parts['bolt4'].InterestingPoint(
+    mdb.models['Model-1'].parts['bolt4'].edges[0], MIDDLE))
+mdb.models['Model-1'].parts['bolt4'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['bolt4'].cells.getSequenceFromMask(('[#3 ]', ), 
+    ))
+mdb.models['Model-1'].parts['bolt4'].PartitionCellByDatumPlane(cells=
+    mdb.models['Model-1'].parts['bolt4'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), datumPlane=mdb.models['Model-1'].parts['bolt4'].datums[6])
+mdb.models['Model-1'].parts['bolt4'].generateMesh()
+mdb.models['Model-1'].parts['bolt3'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=2.4)
+mdb.models['Model-1'].parts['bolt3'].generateMesh()
+mdb.models['Model-1'].parts['bolt3'].deleteMesh()
+mdb.models['Model-1'].parts['bolt3'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['bolt3'].generateMesh()
+mdb.models['Model-1'].parts['bolt4'].deleteMesh()
+mdb.models['Model-1'].parts['bolt4'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.4)
+mdb.models['Model-1'].parts['bolt4'].generateMesh()
+mdb.models['Model-1'].parts['bolt4'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['bolt4'].cells.getSequenceFromMask(('[#7 ]', ), 
+    ))
+mdb.models['Model-1'].parts['bolt4'].deleteSeeds(regions=
+    mdb.models['Model-1'].parts['bolt4'].edges.getSequenceFromMask(('[#1f ]', 
+    ), ))
+mdb.models['Model-1'].parts['bolt4'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['bolt4'].generateMesh()
+mdb.models['Model-1'].parts['bolt2'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['bolt2'].generateMesh()
+mdb.models['Model-1'].parts['bolt1'].seedPart(deviationFactor=0.022, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['bolt1'].deleteSeeds(regions=
+    mdb.models['Model-1'].parts['bolt1'].edges.getSequenceFromMask(('[#1f ]', 
+    ), ))
+mdb.models['Model-1'].parts['bolt1'].generateMesh()
+mdb.models['Model-1'].parts['hub'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['hub'].cells.getSequenceFromMask((
+    '[#3 ]', ), ), ))
+mdb.models['Model-1'].parts['bolt1'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['bolt1'].cells.getSequenceFromMask((
+    '[#7 ]', ), ), ))
+mdb.models['Model-1'].parts['bolt2'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['bolt2'].cells.getSequenceFromMask((
+    '[#7 ]', ), ), ))
+mdb.models['Model-1'].parts['bolt2'].generateMesh()
+mdb.models['Model-1'].parts['bolt1'].generateMesh()
+mdb.models['Model-1'].parts['bolt3'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['bolt3'].cells.getSequenceFromMask((
+    '[#7 ]', ), ), ))
+mdb.models['Model-1'].parts['bolt3'].generateMesh()
+mdb.models['Model-1'].parts['bolt4'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['bolt4'].cells.getSequenceFromMask((
+    '[#7 ]', ), ), ))
+mdb.models['Model-1'].parts['bolt4'].generateMesh()
+mdb.models['Model-1'].parts['spacer1'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['spacer1'].cells.getSequenceFromMask((
+    '[#3 ]', ), ), ))
+mdb.models['Model-1'].parts['spacer1'].generateMesh()
+mdb.models['Model-1'].parts['spacer2'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(mdb.models['Model-1'].parts['spacer2'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), ))
+mdb.models['Model-1'].parts['spacer2'].generateMesh()
+mdb.models['Model-1'].parts['wheel-centre'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(
+    mdb.models['Model-1'].parts['wheel-centre'].cells.getSequenceFromMask((
+    '[#20 ]', ), ), ))
+mdb.models['Model-1'].parts['wheel-centre'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D20, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(
+    mdb.models['Model-1'].parts['wheel-centre'].cells.getSequenceFromMask((
+    '[#1f ]', ), ), ))
+mdb.models['Model-1'].parts['wheel-centre'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='hub-axial', 
+    region=Region(
+    faces=mdb.models['Model-1'].rootAssembly.instances['hub-1'].faces.getSequenceFromMask(
+    mask=('[#400000 ]', ), )), u1=UNSET, u2=UNSET, u3=SET, ur1=UNSET, ur2=UNSET
+    , ur3=UNSET)
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='hub radial', 
+    region=Region(
+    faces=mdb.models['Model-1'].rootAssembly.instances['hub-1'].faces.getSequenceFromMask(
+    mask=('[#200000 ]', ), )), u1=SET, u2=SET, u3=UNSET, ur1=UNSET, ur2=UNSET, 
+    ur3=UNSET)
+# Save by Ali on 2017_01_22-13.58.19; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=THREADS, name='Preload-Test', nodalOutputPrecision=
+    SINGLE, numCpus=4, numDomains=4, numGPUs=0, queue=None, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.models['Model-1'].constraints.delete(('CP-4-bolt1-1-nut1-1', 
+    'CP-8-bolt2-1-nut2-1', 'CP-12-bolt3-1-nut3-1', 'CP-16-bolt4-1-nut4-1'))
+mdb.models['Model-1'].Tie(adjust=ON, constraintEnforcement=SURFACE_TO_SURFACE, 
+    master=Region(
+    side1Faces=mdb.models['Model-1'].rootAssembly.instances['bolt1-1'].faces.getSequenceFromMask(
+    mask=('[#2 ]', ), )), name='Nut-bolt1', positionToleranceMethod=COMPUTED, 
+    slave=Region(
+    side1Faces=mdb.models['Model-1'].rootAssembly.instances['nut1-1'].faces.getSequenceFromMask(
+    mask=('[#200 ]', ), )), thickness=ON, tieRotations=ON)
+mdb.models['Model-1'].Tie(adjust=ON, constraintEnforcement=SURFACE_TO_SURFACE, 
+    master=Region(
+    side1Faces=mdb.models['Model-1'].rootAssembly.instances['bolt4-1'].faces.getSequenceFromMask(
+    mask=('[#2 ]', ), )), name='bolt-nut2', positionToleranceMethod=COMPUTED, 
+    slave=Region(
+    side1Faces=mdb.models['Model-1'].rootAssembly.instances['nut4-1'].faces.getSequenceFromMask(
+    mask=('[#200 ]', ), )), thickness=ON, tieRotations=ON)
+mdb.models['Model-1'].Tie(adjust=ON, constraintEnforcement=SURFACE_TO_SURFACE, 
+    master=Region(
+    side1Faces=mdb.models['Model-1'].rootAssembly.instances['bolt3-1'].faces.getSequenceFromMask(
+    mask=('[#2 ]', ), )), name='bolt-nut3', positionToleranceMethod=COMPUTED, 
+    slave=Region(
+    side1Faces=mdb.models['Model-1'].rootAssembly.instances['nut3-1'].faces.getSequenceFromMask(
+    mask=('[#200 ]', ), )), thickness=ON, tieRotations=ON)
+mdb.models['Model-1'].Tie(adjust=ON, constraintEnforcement=SURFACE_TO_SURFACE, 
+    master=Region(
+    side1Faces=mdb.models['Model-1'].rootAssembly.instances['bolt2-1'].faces.getSequenceFromMask(
+    mask=('[#2 ]', ), )), name='bolt-nut4', positionToleranceMethod=COMPUTED, 
+    slave=Region(
+    side1Faces=mdb.models['Model-1'].rootAssembly.instances['nut2-1'].faces.getSequenceFromMask(
+    mask=('[#200 ]', ), )), thickness=ON, tieRotations=ON)
+mdb.jobs['Preload-Test'].submit(consistencyChecking=OFF, datacheckJob=True)
+# Save by Ali on 2017_01_22-20.37.28; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Preload-Test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'Geoff', 'handle': 0, 'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT1-1_S,ASSEMBLY__T0_NUT1-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT1-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT1-1_SN,ASSEMBLY__T0_NUT1-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT2-1_S,ASSEMBLY__T0_NUT2-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT2-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT2-1_SN,ASSEMBLY__T0_NUT2-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT3-1_S,ASSEMBLY__T0_NUT3-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT3-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT3-1_SN,ASSEMBLY__T0_NUT3-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT4-1_S,ASSEMBLY__T0_NUT4-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT4-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT4-1_SN,ASSEMBLY__T0_NUT4-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_WHEEL-CENTRE-1_S,ASSEMBLY__T0_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_WHEEL-CENTRE-1_SN,ASSEMBLY__T0_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T0_WHEEL-CENTRE-1_SN,ASSEMBLY__T0_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_WHEEL-CENTRE-1_S,ASSEMBLY__T1_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T1_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_WHEEL-CENTRE-1_SN,ASSEMBLY__T1_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T1_WHEEL-CENTRE-1_SN,ASSEMBLY__T1_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T2_WHEEL-CENTRE-1_S,ASSEMBLY__T2_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T2_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T2_WHEEL-CENTRE-1_SN,ASSEMBLY__T2_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T2_WHEEL-CENTRE-1_SN,ASSEMBLY__T2_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T3_WHEEL-CENTRE-1_S,ASSEMBLY__T3_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T3_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T3_WHEEL-CENTRE-1_SN,ASSEMBLY__T3_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T3_WHEEL-CENTRE-1_SN,ASSEMBLY__T3_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T4_WHEEL-CENTRE-1_S,ASSEMBLY__T4_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T4_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T4_WHEEL-CENTRE-1_SN,ASSEMBLY__T4_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T4_WHEEL-CENTRE-1_SN,ASSEMBLY__T4_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T5_WHEEL-CENTRE-1_S,ASSEMBLY__T5_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T5_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T5_WHEEL-CENTRE-1_SN,ASSEMBLY__T5_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T5_WHEEL-CENTRE-1_SN,ASSEMBLY__T5_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T6_WHEEL-CENTRE-1_S,ASSEMBLY__T6_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T6_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T6_WHEEL-CENTRE-1_SN,ASSEMBLY__T6_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T6_WHEEL-CENTRE-1_SN,ASSEMBLY__T6_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T7_WHEEL-CENTRE-1_S,ASSEMBLY__T7_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T7_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T7_WHEEL-CENTRE-1_SN,ASSEMBLY__T7_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T7_WHEEL-CENTRE-1_SN,ASSEMBLY__T7_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T8_WHEEL-CENTRE-1_S,ASSEMBLY__T8_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T8_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T8_WHEEL-CENTRE-1_SN,ASSEMBLY__T8_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T8_WHEEL-CENTRE-1_SN,ASSEMBLY__T8_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T9_WHEEL-CENTRE-1_S,ASSEMBLY__T9_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T9_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T9_WHEEL-CENTRE-1_SN,ASSEMBLY__T9_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T9_WHEEL-CENTRE-1_SN,ASSEMBLY__T9_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T10_WHEEL-CENTRE-1_S,ASSEMBLY__T10_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T10_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T10_WHEEL-CENTRE-1_SN,ASSEMBLY__T10_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T10_WHEEL-CENTRE-1_SN,ASSEMBLY__T10_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T11_WHEEL-CENTRE-1_S,ASSEMBLY__T11_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T11_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T11_WHEEL-CENTRE-1_SN,ASSEMBLY__T11_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T11_WHEEL-CENTRE-1_SN,ASSEMBLY__T11_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T12_WHEEL-CENTRE-1_S,ASSEMBLY__T12_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T12_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T12_WHEEL-CENTRE-1_SN,ASSEMBLY__T12_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T12_WHEEL-CENTRE-1_SN,ASSEMBLY__T12_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T13_WHEEL-CENTRE-1_S,ASSEMBLY__T13_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T13_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T13_WHEEL-CENTRE-1_SN,ASSEMBLY__T13_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T13_WHEEL-CENTRE-1_SN,ASSEMBLY__T13_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T14_WHEEL-CENTRE-1_S,ASSEMBLY__T14_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T14_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T14_WHEEL-CENTRE-1_SN,ASSEMBLY__T14_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T14_WHEEL-CENTRE-1_SN,ASSEMBLY__T14_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T15_WHEEL-CENTRE-1_S,ASSEMBLY__T15_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T15_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T15_WHEEL-CENTRE-1_SN,ASSEMBLY__T15_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T15_WHEEL-CENTRE-1_SN,ASSEMBLY__T15_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T16_WHEEL-CENTRE-1_S,ASSEMBLY__T16_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T16_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T16_WHEEL-CENTRE-1_SN,ASSEMBLY__T16_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T16_WHEEL-CENTRE-1_SN,ASSEMBLY__T16_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T17_WHEEL-CENTRE-1_S,ASSEMBLY__T17_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T17_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T17_WHEEL-CENTRE-1_SN,ASSEMBLY__T17_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T17_WHEEL-CENTRE-1_SN,ASSEMBLY__T17_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T18_WHEEL-CENTRE-1_S,ASSEMBLY__T18_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T18_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T18_WHEEL-CENTRE-1_SN,ASSEMBLY__T18_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T18_WHEEL-CENTRE-1_SN,ASSEMBLY__T18_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T19_WHEEL-CENTRE-1_S,ASSEMBLY__T19_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T19_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T19_WHEEL-CENTRE-1_SN,ASSEMBLY__T19_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T19_WHEEL-CENTRE-1_SN,ASSEMBLY__T19_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T20_WHEEL-CENTRE-1_S,ASSEMBLY__T20_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T20_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T20_WHEEL-CENTRE-1_SN,ASSEMBLY__T20_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T20_WHEEL-CENTRE-1_SN,ASSEMBLY__T20_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T21_WHEEL-CENTRE-1_S,ASSEMBLY__T21_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T21_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T21_WHEEL-CENTRE-1_SN,ASSEMBLY__T21_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T21_WHEEL-CENTRE-1_SN,ASSEMBLY__T21_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF47,ASSEMBLY__PICKEDSURF46) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF47-ASSEMBLY__PICKEDSURF46), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF49,ASSEMBLY__PICKEDSURF48) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF49-ASSEMBLY__PICKEDSURF48), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF51,ASSEMBLY__PICKEDSURF50) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF51-ASSEMBLY__PICKEDSURF50), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF53,ASSEMBLY__PICKEDSURF52) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF53-ASSEMBLY__PICKEDSURF52), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,CONTACT=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,CONTACT=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '138 nodes have been adjusted more than once. The subsequent adjustments may cause these nodes not to lie on their master surface. The nodes have been identified in node set WarnNodeAdjust.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': '353921 elements have missing property definitions. The elements have been identified in element set ErrElemMissingSection.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\Ali\\Documents\\MEGA\\University\\5th_Year\\FEM 4\\My_Stuff\\Kick Ass Wheel Centre\\Abaqus Files\\Validation FEA\\Preload-Test.odb', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 
+    'jobName': 'Preload-Test'})
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((210000.0, 0.3), ))
+mdb.models['Model-1'].Material(name='Aluminium')
+mdb.models['Model-1'].materials['Aluminium'].Elastic(table=((70000.0, 0.3), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name='Steel', 
+    thickness=None)
+mdb.models['Model-1'].HomogeneousSolidSection(material='Aluminium', name=
+    'Aluminium', thickness=None)
+mdb.models['Model-1'].parts['wheel-centre'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['wheel-centre'].cells.getSequenceFromMask(
+    mask=('[#3f ]', ), )), sectionName='Aluminium', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].parts['bolt1'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['bolt1'].cells.getSequenceFromMask(mask=(
+    '[#7 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['bolt2'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['bolt2'].cells.getSequenceFromMask(mask=(
+    '[#7 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['bolt3'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['bolt3'].cells.getSequenceFromMask(mask=(
+    '[#7 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['bolt4'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['bolt4'].cells.getSequenceFromMask(mask=(
+    '[#7 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['brake'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['brake'].cells.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['hub'].SectionAssignment(offset=0.0, offsetField=''
+    , offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['hub'].cells.getSequenceFromMask(mask=(
+    '[#3 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['nut1'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['nut1'].cells.getSequenceFromMask(mask=(
+    '[#3 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['nut2'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['nut2'].cells.getSequenceFromMask(mask=(
+    '[#3 ]', ), )), sectionName='Aluminium', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['nut3'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['nut3'].cells.getSequenceFromMask(mask=(
+    '[#3 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['nut4'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['nut4'].cells.getSequenceFromMask(mask=(
+    '[#3 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['spacer1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['spacer1'].cells.getSequenceFromMask(
+    mask=('[#3 ]', ), )), sectionName='Aluminium', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].parts['spacer2'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['spacer2'].cells.getSequenceFromMask(
+    mask=('[#1 ]', ), )), sectionName='Aluminium', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].parts['washer1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['washer1'].cells.getSequenceFromMask(
+    mask=('[#1 ]', ), )), sectionName='Steel', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].parts['washer2'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['washer2'].cells.getSequenceFromMask(
+    mask=('[#1 ]', ), )), sectionName='Steel', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].parts['washer3'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['washer3'].cells.getSequenceFromMask(
+    mask=('[#1 ]', ), )), sectionName='Steel', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].parts['washer4'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['washer4'].cells.getSequenceFromMask(
+    mask=('[#1 ]', ), )), sectionName='Steel', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['washer4'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['washer4'].cells.getSequenceFromMask(
+    mask=('[#1 ]', ), )), sectionName='Steel', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+del mdb.models['Model-1'].parts['washer4'].sectionAssignments[1]
+mdb.models['Model-1'].rootAssembly.regenerate()
+del mdb.models['Model-1'].parts['nut1'].sectionAssignments[0]
+mdb.models['Model-1'].parts['nut1'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['nut1'].cells.getSequenceFromMask(mask=(
+    '[#3 ]', ), )), sectionName='Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['nut2'].sectionAssignments[0].setValues(
+    sectionName='Steel')
+mdb.models['Model-1'].rootAssembly.regenerate()
+# Save by Ali on 2017_01_22-20.48.48; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Preload-Test'].submit(consistencyChecking=OFF, datacheckJob=True)
+mdb.jobs['Preload-Test']._Message(ERROR, {
+    'message': 'XML parsing failure for job Preload-Test.  Shutting down socket and terminating all further messages.  Please check the .log, .dat, .sta, or .msg files for information about the status of the job.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(ERROR, {
+    'message': 'XML parsing failure for job Preload-Test.  Shutting down socket and terminating all further messages.  Please check the .log, .dat, .sta, or .msg files for information about the status of the job.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(JOB_ABORTED, {})
+mdb.jobs['Preload-Test']._Message(ERROR, {
+    'message': 'XML parsing failure for job Preload-Test.  Shutting down socket and terminating all further messages.  Please check the .log, .dat, .sta, or .msg files for information about the status of the job.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(JOB_ABORTED, {})
+mdb.models['Model-1'].steps['Wheel-load'].suppress()
+# Save by Ali on 2017_01_22-20.54.07; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Preload-Test'].submit(consistencyChecking=OFF, datacheckJob=True)
+mdb.jobs['Preload-Test']._Message(ERROR, {
+    'message': 'Detected lock file Preload-Test.lck. Please confirm that no other applications are attempting to write to the output database associated with this job before removing the lock file and resubmitting.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(JOB_ABORTED, {
+    'message': 'Detected lock file Preload-Test.lck. Please confirm that no other applications are attempting to write to the output database associated with this job before removing the lock file and resubmitting.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test'].submit(consistencyChecking=OFF)
+mdb.jobs['Preload-Test']._Message(ERROR, {
+    'message': 'Unable to delete file(s) ["C:\\\\Users\\\\Ali\\\\Documents\\\\MEGA\\\\University\\\\5th_Year\\\\FEM 4\\\\My_Stuff\\\\Kick Ass Wheel Centre\\\\Abaqus Files\\\\Validation FEA\\\\Preload-Test.023"]. Please check that you have file ownership and permissions for removal.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(JOB_ABORTED, {
+    'message': 'Unable to delete file(s) ["C:\\\\Users\\\\Ali\\\\Documents\\\\MEGA\\\\University\\\\5th_Year\\\\FEM 4\\\\My_Stuff\\\\Kick Ass Wheel Centre\\\\Abaqus Files\\\\Validation FEA\\\\Preload-Test.023"]. Please check that you have file ownership and permissions for removal.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test'].submit(consistencyChecking=OFF, datacheckJob=True)
+mdb.jobs['Preload-Test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'Geoff', 'handle': 0, 'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT1-1_S,ASSEMBLY__T0_NUT1-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT1-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT1-1_SN,ASSEMBLY__T0_NUT1-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT2-1_S,ASSEMBLY__T0_NUT2-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT2-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT2-1_SN,ASSEMBLY__T0_NUT2-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT3-1_S,ASSEMBLY__T0_NUT3-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT3-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT3-1_SN,ASSEMBLY__T0_NUT3-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT4-1_S,ASSEMBLY__T0_NUT4-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT4-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT4-1_SN,ASSEMBLY__T0_NUT4-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_WHEEL-CENTRE-1_S,ASSEMBLY__T0_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_WHEEL-CENTRE-1_SN,ASSEMBLY__T0_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T0_WHEEL-CENTRE-1_SN,ASSEMBLY__T0_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_WHEEL-CENTRE-1_S,ASSEMBLY__T1_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T1_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_WHEEL-CENTRE-1_SN,ASSEMBLY__T1_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T1_WHEEL-CENTRE-1_SN,ASSEMBLY__T1_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T2_WHEEL-CENTRE-1_S,ASSEMBLY__T2_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T2_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T2_WHEEL-CENTRE-1_SN,ASSEMBLY__T2_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T2_WHEEL-CENTRE-1_SN,ASSEMBLY__T2_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T3_WHEEL-CENTRE-1_S,ASSEMBLY__T3_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T3_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T3_WHEEL-CENTRE-1_SN,ASSEMBLY__T3_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T3_WHEEL-CENTRE-1_SN,ASSEMBLY__T3_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T4_WHEEL-CENTRE-1_S,ASSEMBLY__T4_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T4_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T4_WHEEL-CENTRE-1_SN,ASSEMBLY__T4_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T4_WHEEL-CENTRE-1_SN,ASSEMBLY__T4_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T5_WHEEL-CENTRE-1_S,ASSEMBLY__T5_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T5_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T5_WHEEL-CENTRE-1_SN,ASSEMBLY__T5_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T5_WHEEL-CENTRE-1_SN,ASSEMBLY__T5_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T6_WHEEL-CENTRE-1_S,ASSEMBLY__T6_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T6_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T6_WHEEL-CENTRE-1_SN,ASSEMBLY__T6_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T6_WHEEL-CENTRE-1_SN,ASSEMBLY__T6_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T7_WHEEL-CENTRE-1_S,ASSEMBLY__T7_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T7_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T7_WHEEL-CENTRE-1_SN,ASSEMBLY__T7_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T7_WHEEL-CENTRE-1_SN,ASSEMBLY__T7_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T8_WHEEL-CENTRE-1_S,ASSEMBLY__T8_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T8_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T8_WHEEL-CENTRE-1_SN,ASSEMBLY__T8_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T8_WHEEL-CENTRE-1_SN,ASSEMBLY__T8_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T9_WHEEL-CENTRE-1_S,ASSEMBLY__T9_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T9_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T9_WHEEL-CENTRE-1_SN,ASSEMBLY__T9_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T9_WHEEL-CENTRE-1_SN,ASSEMBLY__T9_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T10_WHEEL-CENTRE-1_S,ASSEMBLY__T10_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T10_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T10_WHEEL-CENTRE-1_SN,ASSEMBLY__T10_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T10_WHEEL-CENTRE-1_SN,ASSEMBLY__T10_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T11_WHEEL-CENTRE-1_S,ASSEMBLY__T11_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T11_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T11_WHEEL-CENTRE-1_SN,ASSEMBLY__T11_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T11_WHEEL-CENTRE-1_SN,ASSEMBLY__T11_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T12_WHEEL-CENTRE-1_S,ASSEMBLY__T12_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T12_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T12_WHEEL-CENTRE-1_SN,ASSEMBLY__T12_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T12_WHEEL-CENTRE-1_SN,ASSEMBLY__T12_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T13_WHEEL-CENTRE-1_S,ASSEMBLY__T13_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T13_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T13_WHEEL-CENTRE-1_SN,ASSEMBLY__T13_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T13_WHEEL-CENTRE-1_SN,ASSEMBLY__T13_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T14_WHEEL-CENTRE-1_S,ASSEMBLY__T14_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T14_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T14_WHEEL-CENTRE-1_SN,ASSEMBLY__T14_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T14_WHEEL-CENTRE-1_SN,ASSEMBLY__T14_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T15_WHEEL-CENTRE-1_S,ASSEMBLY__T15_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T15_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T15_WHEEL-CENTRE-1_SN,ASSEMBLY__T15_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T15_WHEEL-CENTRE-1_SN,ASSEMBLY__T15_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T16_WHEEL-CENTRE-1_S,ASSEMBLY__T16_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T16_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T16_WHEEL-CENTRE-1_SN,ASSEMBLY__T16_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T16_WHEEL-CENTRE-1_SN,ASSEMBLY__T16_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T17_WHEEL-CENTRE-1_S,ASSEMBLY__T17_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T17_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T17_WHEEL-CENTRE-1_SN,ASSEMBLY__T17_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T17_WHEEL-CENTRE-1_SN,ASSEMBLY__T17_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T18_WHEEL-CENTRE-1_S,ASSEMBLY__T18_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T18_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T18_WHEEL-CENTRE-1_SN,ASSEMBLY__T18_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T18_WHEEL-CENTRE-1_SN,ASSEMBLY__T18_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T19_WHEEL-CENTRE-1_S,ASSEMBLY__T19_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T19_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T19_WHEEL-CENTRE-1_SN,ASSEMBLY__T19_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T19_WHEEL-CENTRE-1_SN,ASSEMBLY__T19_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T20_WHEEL-CENTRE-1_S,ASSEMBLY__T20_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T20_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T20_WHEEL-CENTRE-1_SN,ASSEMBLY__T20_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T20_WHEEL-CENTRE-1_SN,ASSEMBLY__T20_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T21_WHEEL-CENTRE-1_S,ASSEMBLY__T21_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T21_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T21_WHEEL-CENTRE-1_SN,ASSEMBLY__T21_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T21_WHEEL-CENTRE-1_SN,ASSEMBLY__T21_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF47,ASSEMBLY__PICKEDSURF46) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF47-ASSEMBLY__PICKEDSURF46), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF49,ASSEMBLY__PICKEDSURF48) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF49-ASSEMBLY__PICKEDSURF48), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF51,ASSEMBLY__PICKEDSURF50) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF51-ASSEMBLY__PICKEDSURF50), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF53,ASSEMBLY__PICKEDSURF52) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF53-ASSEMBLY__PICKEDSURF52), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,CONTACT=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,CONTACT=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '138 nodes have been adjusted more than once. The subsequent adjustments may cause these nodes not to lie on their master surface. The nodes have been identified in node set WarnNodeAdjust.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'Process terminated by external request (SIGTERM or SIGINT received).', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(INTERRUPTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis interrupted by external signal', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Preload-Test'})
+mdb.models['Model-1'].BoltLoad(boltMethod=APPLY_FORCE, createStepName='Preload'
+    , datumAxis=
+    mdb.models['Model-1'].rootAssembly.instances['bolt1-1'].datums[4], 
+    magnitude=28100.0, name='bolt-preload-1', region=Region(
+    side2Faces=mdb.models['Model-1'].rootAssembly.instances['bolt1-1'].faces.getSequenceFromMask(
+    mask=('[#1 ]', ), )))
+mdb.models['Model-1'].BoltLoad(boltMethod=APPLY_FORCE, createStepName='Preload'
+    , datumAxis=
+    mdb.models['Model-1'].rootAssembly.instances['bolt4-1'].datums[2], 
+    magnitude=28100.0, name='bolt-preload-2', region=Region(
+    side2Faces=mdb.models['Model-1'].rootAssembly.instances['bolt4-1'].faces.getSequenceFromMask(
+    mask=('[#1 ]', ), )))
+mdb.models['Model-1'].Load(name='bolt-preload-3', objectToCopy=
+    mdb.models['Model-1'].loads['bolt-preload-2'], toStepName='Preload')
+mdb.models['Model-1'].loads['bolt-preload-3'].setValues(datumAxis=
+    mdb.models['Model-1'].rootAssembly.instances['bolt3-1'].datums[2], region=
+    Region(
+    side2Faces=mdb.models['Model-1'].rootAssembly.instances['bolt3-1'].faces.getSequenceFromMask(
+    mask=('[#1 ]', ), )))
+mdb.models['Model-1'].Load(name='bolt-preload-4', objectToCopy=
+    mdb.models['Model-1'].loads['bolt-preload-3'], toStepName='Preload')
+mdb.models['Model-1'].loads['bolt-preload-4'].setValues(datumAxis=
+    mdb.models['Model-1'].rootAssembly.instances['bolt2-1'].datums[2], region=
+    Region(
+    side2Faces=mdb.models['Model-1'].rootAssembly.instances['bolt2-1'].faces.getSequenceFromMask(
+    mask=('[#1 ]', ), )))
+# Save by Ali on 2017_01_22-21.06.48; build 6.13-1 2013_05_16-03.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Preload-Test'].submit(consistencyChecking=OFF, datacheckJob=True)
+mdb.jobs['Preload-Test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'Geoff', 'handle': 0, 'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT1-1_S,ASSEMBLY__T0_NUT1-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT1-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT1-1_SN,ASSEMBLY__T0_NUT1-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT2-1_S,ASSEMBLY__T0_NUT2-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT2-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT2-1_SN,ASSEMBLY__T0_NUT2-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT3-1_S,ASSEMBLY__T0_NUT3-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT3-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT3-1_SN,ASSEMBLY__T0_NUT3-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT4-1_S,ASSEMBLY__T0_NUT4-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_NUT4-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_NUT4-1_SN,ASSEMBLY__T0_NUT4-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_WHEEL-CENTRE-1_S,ASSEMBLY__T0_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T0_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_WHEEL-CENTRE-1_SN,ASSEMBLY__T0_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T0_WHEEL-CENTRE-1_SN,ASSEMBLY__T0_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_WHEEL-CENTRE-1_S,ASSEMBLY__T1_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T1_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_WHEEL-CENTRE-1_SN,ASSEMBLY__T1_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T1_WHEEL-CENTRE-1_SN,ASSEMBLY__T1_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T2_WHEEL-CENTRE-1_S,ASSEMBLY__T2_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T2_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T2_WHEEL-CENTRE-1_SN,ASSEMBLY__T2_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T2_WHEEL-CENTRE-1_SN,ASSEMBLY__T2_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T3_WHEEL-CENTRE-1_S,ASSEMBLY__T3_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T3_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T3_WHEEL-CENTRE-1_SN,ASSEMBLY__T3_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T3_WHEEL-CENTRE-1_SN,ASSEMBLY__T3_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T4_WHEEL-CENTRE-1_S,ASSEMBLY__T4_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T4_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T4_WHEEL-CENTRE-1_SN,ASSEMBLY__T4_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T4_WHEEL-CENTRE-1_SN,ASSEMBLY__T4_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T5_WHEEL-CENTRE-1_S,ASSEMBLY__T5_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T5_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T5_WHEEL-CENTRE-1_SN,ASSEMBLY__T5_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T5_WHEEL-CENTRE-1_SN,ASSEMBLY__T5_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T6_WHEEL-CENTRE-1_S,ASSEMBLY__T6_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T6_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T6_WHEEL-CENTRE-1_SN,ASSEMBLY__T6_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T6_WHEEL-CENTRE-1_SN,ASSEMBLY__T6_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T7_WHEEL-CENTRE-1_S,ASSEMBLY__T7_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T7_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T7_WHEEL-CENTRE-1_SN,ASSEMBLY__T7_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T7_WHEEL-CENTRE-1_SN,ASSEMBLY__T7_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T8_WHEEL-CENTRE-1_S,ASSEMBLY__T8_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T8_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T8_WHEEL-CENTRE-1_SN,ASSEMBLY__T8_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T8_WHEEL-CENTRE-1_SN,ASSEMBLY__T8_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T9_WHEEL-CENTRE-1_S,ASSEMBLY__T9_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T9_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T9_WHEEL-CENTRE-1_SN,ASSEMBLY__T9_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T9_WHEEL-CENTRE-1_SN,ASSEMBLY__T9_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T10_WHEEL-CENTRE-1_S,ASSEMBLY__T10_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T10_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T10_WHEEL-CENTRE-1_SN,ASSEMBLY__T10_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T10_WHEEL-CENTRE-1_SN,ASSEMBLY__T10_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T11_WHEEL-CENTRE-1_S,ASSEMBLY__T11_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T11_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T11_WHEEL-CENTRE-1_SN,ASSEMBLY__T11_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T11_WHEEL-CENTRE-1_SN,ASSEMBLY__T11_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T12_WHEEL-CENTRE-1_S,ASSEMBLY__T12_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T12_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T12_WHEEL-CENTRE-1_SN,ASSEMBLY__T12_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T12_WHEEL-CENTRE-1_SN,ASSEMBLY__T12_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T13_WHEEL-CENTRE-1_S,ASSEMBLY__T13_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T13_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T13_WHEEL-CENTRE-1_SN,ASSEMBLY__T13_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T13_WHEEL-CENTRE-1_SN,ASSEMBLY__T13_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T14_WHEEL-CENTRE-1_S,ASSEMBLY__T14_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T14_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T14_WHEEL-CENTRE-1_SN,ASSEMBLY__T14_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T14_WHEEL-CENTRE-1_SN,ASSEMBLY__T14_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T15_WHEEL-CENTRE-1_S,ASSEMBLY__T15_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T15_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T15_WHEEL-CENTRE-1_SN,ASSEMBLY__T15_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T15_WHEEL-CENTRE-1_SN,ASSEMBLY__T15_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T16_WHEEL-CENTRE-1_S,ASSEMBLY__T16_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T16_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T16_WHEEL-CENTRE-1_SN,ASSEMBLY__T16_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T16_WHEEL-CENTRE-1_SN,ASSEMBLY__T16_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T17_WHEEL-CENTRE-1_S,ASSEMBLY__T17_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T17_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T17_WHEEL-CENTRE-1_SN,ASSEMBLY__T17_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T17_WHEEL-CENTRE-1_SN,ASSEMBLY__T17_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T18_WHEEL-CENTRE-1_S,ASSEMBLY__T18_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T18_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T18_WHEEL-CENTRE-1_SN,ASSEMBLY__T18_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T18_WHEEL-CENTRE-1_SN,ASSEMBLY__T18_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T19_WHEEL-CENTRE-1_S,ASSEMBLY__T19_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T19_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T19_WHEEL-CENTRE-1_SN,ASSEMBLY__T19_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T19_WHEEL-CENTRE-1_SN,ASSEMBLY__T19_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T20_WHEEL-CENTRE-1_S,ASSEMBLY__T20_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T20_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T20_WHEEL-CENTRE-1_SN,ASSEMBLY__T20_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T20_WHEEL-CENTRE-1_SN,ASSEMBLY__T20_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T21_WHEEL-CENTRE-1_S,ASSEMBLY__T21_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY__T21_WHEEL-CENTRE-1_SN IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T21_WHEEL-CENTRE-1_SN,ASSEMBLY__T21_WHEEL-CENTRE-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__T21_WHEEL-CENTRE-1_SN,ASSEMBLY__T21_WHEEL-CENTRE-1_M) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF47,ASSEMBLY__PICKEDSURF46) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF47-ASSEMBLY__PICKEDSURF46), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF49,ASSEMBLY__PICKEDSURF48) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF49-ASSEMBLY__PICKEDSURF48), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF51,ASSEMBLY__PICKEDSURF50) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF51-ASSEMBLY__PICKEDSURF50), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PLEASE MAKE SURE THAT THE MESH DENSITY OF THE SLAVE SURFACE IN THE TIE PAIR (ASSEMBLY__PICKEDSURF53,ASSEMBLY__PICKEDSURF52) IS FINER THAN THE MASTER SURFACE.  THE ANALYSIS MAY RUN SLOWER, MAY YIELD INACCURATE RESULTS, AND MAY REQUIRE MORE MEMORY IF THIS IS NOT THE CASE.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY__PICKEDSURF53-ASSEMBLY__PICKEDSURF52), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,CONTACT=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,CONTACT=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '138 nodes have been adjusted more than once. The subsequent adjustments may cause these nodes not to lie on their master surface. The nodes have been identified in node set WarnNodeAdjust.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '2140 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\Ali\\Documents\\MEGA\\University\\5th_Year\\FEM 4\\My_Stuff\\Kick Ass Wheel Centre\\Abaqus Files\\Validation FEA\\Preload-Test.odb', 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'Geoff', 'handle': 15992, 'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Preload-Test', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Preload-Test']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Preload-Test', 'memory': 14663.6999998093})
+mdb.jobs['Preload-Test']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Preload-Test'})
+mdb.jobs['Preload-Test']._Message(JOB_COMPLETED, {
+    'time': 'Sun Jan 22 21:16:39 2017', 'jobName': 'Preload-Test'})
+# Save by Ali on 2017_01_22-21.25.11; build 6.13-1 2013_05_16-03.28.56 126354
